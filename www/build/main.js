@@ -616,23 +616,31 @@ var HomePage = /** @class */ (function () {
     function HomePage(navCtrl, afAuth) {
         this.navCtrl = navCtrl;
         this.afAuth = afAuth;
+    }
+    // on load show what type of email is logged in (is it showing last recently logged in?
+    // may need to change)
+    HomePage.prototype.ionViewDidLoad = function () {
         this.afAuth.authState.subscribe(function (res) {
+            var printer = "";
             if (res && res.uid) {
                 console.log(res.email);
                 console.log('user is logged in');
                 var string = res.email, prof_substring = "@northwestern.edu", student_substring = "@u.northwestern.edu";
                 if (string.includes(prof_substring)) {
                     console.log("Professor email.");
+                    printer = "PROF EMAIL";
                 }
                 else if (string.includes(student_substring)) {
                     console.log("Student email.");
+                    printer = "STUDENT EMAIL";
                 }
             }
             else {
                 console.log('user not logged in');
             }
+            document.getElementById('printer').innerHTML = printer;
         });
-    }
+    };
     HomePage.prototype.navigateToClassesSPage = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__classes_s_classes_s__["a" /* ClassesSPage */]);
     };
@@ -644,7 +652,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      ClassConfusion v.2\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <p> Click the buttons below to either test login functionality or test out the student or professor route (this will be automatically after login in reality)\n  </p>\n\n  <button ion-button color=light (click) = "navigateToLoginPage()">LOGIN PAGE</button>\n  <br>\n  <button ion-button (click)="navigateToClassesSPage()">STUDENT ROUTE: Classes Page</button>\n  <br>\n  <button ion-button (click)="navigateToManagePPage()">PROFESSOR ROUTE: Manage Student Classes</button>\n</ion-content>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      ClassConfusion v.2\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <p> Click the buttons below to either test login functionality or test out the student or professor route (this will be automatically after login in reality)\n  </p>\n\n  <button ion-button color=light (click) = "navigateToLoginPage()">LOGIN PAGE</button>\n  <br>\n  <button ion-button (click)="navigateToClassesSPage()">STUDENT ROUTE: Classes Page</button>\n  <br>\n  <button ion-button (click)="navigateToManagePPage()">PROFESSOR ROUTE: Manage Student Classes</button>\n\n  <h3> Type of email that\'s logged in:  <b><span id="printer"></span></b></h3>\n\n</ion-content>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _b || Object])
     ], HomePage);

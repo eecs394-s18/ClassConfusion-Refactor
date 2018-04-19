@@ -13,27 +13,40 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public afAuth:AngularFireAuth) {
 
-    this.afAuth.authState.subscribe(res => {
+
+  }
+
+// on load show what type of email is logged in (is it showing last recently logged in?
+// may need to change)
+ionViewDidLoad() {
+
+   this.afAuth.authState.subscribe(res => {
+      var printer = "";
       if (res && res.uid) {
         console.log(res.email);
         console.log('user is logged in');
 
         var string = res.email, prof_substring = "@northwestern.edu", student_substring = "@u.northwestern.edu";
         if(string.includes(prof_substring)){
-          console.log("Professor email.")
+          console.log("Professor email.");
+          printer = "PROF EMAIL"
+
         }
         else if(string.includes(student_substring)){
           console.log("Student email.")
+          printer = "STUDENT EMAIL"
         }
 
 
-      } else {
+      }
+       else {
         console.log('user not logged in');
       }
+
+      document.getElementById('printer').innerHTML = printer;
     });
 
-  }
-
+ }
 
 
 
