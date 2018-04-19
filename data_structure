@@ -1,0 +1,79 @@
+{
+    "classes": {
+        "eecs349: {
+            "professorname": "riesbeck"
+            "lectures": {
+                "lecture1": {
+                    "date": "500",
+                    "topics:" {
+                        "topic1": {
+                            "name": "hi",
+                            "voteCount": 0
+                        },
+                        "topic2": {
+                            "name": "hey",
+                            "voteCount": 0
+                        }
+                    }
+                },
+                "lecture2": {
+                    "date": "100",
+                    "topics:" {
+                        "topic1": {
+                            "name": "hi",
+                            "voteCount": 0
+                        },
+                        "topic2": {
+                            "name": "hey",
+                            "voteCount": 0
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+
+# or a *slightly* shallower method...
+
+{
+    "classes": {
+        "eecs349: {
+            "professorname": "riesbeck"
+    },
+
+    "lectures": {
+        "eecs349:" {
+            "lecture1": {
+                "date": "500",
+                "topics:" {
+                    "topic1": {
+                        "name": "hi",
+                        "voteCount": 0
+                    },
+                    "topic2": {
+                        "name": "hey",
+                        "voteCount": 0
+                    }
+                }
+            },
+            "lecture2": {
+                "date": "100",
+                "topics:" {
+                    "topic1": {
+                        "name": "hi",
+                        "voteCount": 0
+                    },
+                    "topic2": {
+                        "name": "hey",
+                        "voteCount": 0
+                    }
+                }
+            }
+            }
+        }
+    }
+}
+
