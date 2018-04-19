@@ -596,6 +596,7 @@ var ResultsPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_s_classes_s__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__manage_p_manage_p__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_login__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__ = __webpack_require__(161);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -610,9 +611,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomePage = /** @class */ (function () {
-    function HomePage(navCtrl) {
+    function HomePage(navCtrl, afAuth) {
         this.navCtrl = navCtrl;
+        this.afAuth = afAuth;
+        this.afAuth.authState.subscribe(function (res) {
+            if (res && res.uid) {
+                console.log(res.email);
+                console.log('user is logged in');
+                var string = res.email, prof_substring = "@northwestern.edu", student_substring = "@u.northwestern.edu";
+                if (string.includes(prof_substring)) {
+                    console.log("Professor email.");
+                }
+                else if (string.includes(student_substring)) {
+                    console.log("Student email.");
+                }
+            }
+            else {
+                console.log('user not logged in');
+            }
+        });
     }
     HomePage.prototype.navigateToClassesSPage = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__classes_s_classes_s__["a" /* ClassesSPage */]);
@@ -627,9 +646,10 @@ var HomePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      ClassConfusion v.2\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <p> Click the buttons below to either test login functionality or test out the student or professor route (this will be automatically after login in reality)\n  </p>\n\n  <button ion-button color=light (click) = "navigateToLoginPage()">LOGIN PAGE</button>\n  <br>\n  <button ion-button (click)="navigateToClassesSPage()">STUDENT ROUTE: Classes Page</button>\n  <br>\n  <button ion-button (click)="navigateToManagePPage()">PROFESSOR ROUTE: Manage Student Classes</button>\n</ion-content>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _b || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=home.js.map
