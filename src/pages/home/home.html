@@ -7,11 +7,12 @@
 </ion-header>
 
 <ion-content padding>
-  <p> Click the buttons below to go either the student or professor route (this will be automatically after login in reality)
+  <p> Click the buttons below to either test login functionality or test out the student or professor route (this will be automatically after login in reality)
   </p>
 
-<h2>the text below are buttons they just don't look like it</h2>
-  <button (click)="navigateToClassesSPage()">STUDENT ROUTE: Classes Page</button>
+  <button ion-button color=light (click) = "navigateToLoginPage()">LOGIN PAGE</button>
   <br>
-  <button (click)="navigateToManagePPage()">PROFESSOR ROUTE: Manage Student Classes</button>
+  <button ion-button (click)="navigateToClassesSPage()">STUDENT ROUTE: Classes Page</button>
+  <br>
+  <button ion-button (click)="navigateToManagePPage()">PROFESSOR ROUTE: Manage Student Classes</button>
 </ion-content>
