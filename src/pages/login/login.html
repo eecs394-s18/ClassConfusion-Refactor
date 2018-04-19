@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>ClassConfusion</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>Welcome to ClassConfusion! Log in or register below to get started.</h1>
+  <h2> *** Not sure yet how we are going to distinguish between prof/student. Potentially could just check if it's a .edu email or u.edu for student. You can acess the current user's email after logging in so we could probably do it that way.</h2>
+  <ion-item>
+    <ion-label floating>Email Address</ion-label>
+    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+  </ion-item>
+  <br><br>
+
+  <button ion-button (click)="login(user)">Login</button>
+  <button ion-button color="light" (click)="register(user)">Register</button>
+
+  <br>
+  <!-- <button ion-button (click)="printUser">view user</button> -->
+</ion-content>
