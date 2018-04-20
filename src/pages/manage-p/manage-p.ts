@@ -14,8 +14,8 @@ export class ManagePPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider, public alertCtrl: AlertController, private fbApp: FirebaseApp) {
 
-    this.topicsRef =  this.fbApp.database().ref('/topics/');
-    this.getTopics(); // load up the topicList
+    this.classesRef =  this.fbApp.database().ref('/classes/');
+    this.getClasses(); // load up the topicList
     this.checkedMap = new Map([]);
   }
 
@@ -28,47 +28,47 @@ export class ManagePPage {
 	}
 
 
-  topicList: Array<any> = [];
-  newTopic = '';
-  topicsRef: any; // Reference that is frequenly used
+  classList: Array<any> = [];
+  newClass = '';
+  classesRef: any; // Reference that is frequenly used
   ready: boolean = false; // Check if topics are retrieved before loading list of checkboxes
 
   checkedMap: Map<string, boolean>;
 
 
-  getTopics() {
+  getClasses() {
     this.ready = false;
-    this.topicList = []; // this doesn't work - wipe to prevent duplicates from appearing
-    this.topicsRef.on('value', (snapshot) => {
+    this.classList = []; // this doesn't work - wipe to prevent duplicates from appearing
+    this.classesRef.on('value', (snapshot) => {
       snapshot.forEach((child) => {
-        this.topicList.push(child.val());
+        this.classList.push(child.val());
       });
     });
-    console.log("[Alert] Retrieved topics from Firebase.");
+    console.log("[Alert] Retrieved classes from Firebase.");
     this.ready = true; // Now ready to display...
   }
 
-  addTopic() {
-    if (this.newTopic.length === 0) { return; } // Fix for issue #5
-    this.topicsRef.child(this.newTopic).once('value', (snapshot) => {
+  addClass() {
+    if (this.newClass.length === 0) { return; } // Fix for issue #5
+    this.classesRef.child(this.newClass).once('value', (snapshot) => {
       if (snapshot.exists()) {
         this.presentAlert();
       }
       else {
         this.ready = false;
-        this.firebaseProvider.addTopic(this.newTopic);
-        this.newTopic = ""; // empty out the new topic field
-        this.getTopics();
+        this.firebaseProvider.addClass(this.newClass);
+        this.newClass = ""; // empty out the new class field
+        this.getClasses();
       }
     });
 
   }
 
-  removeTopic(name) {
+  removeClass(name) {
     this.ready = false;
-    this.firebaseProvider.removeTopic(name);
+    this.firebaseProvider.removeClass(name);
     this.checkedMap.delete(name);
-    this.getTopics();
+    this.getClasses();
   }
 
   presentAlert() {
