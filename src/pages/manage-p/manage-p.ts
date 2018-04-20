@@ -27,7 +27,14 @@ export class ManagePPage {
    		this.navCtrl.push(LecturesPPage);
 	}
 
+  // trying to make a function that will take the name of class clicked on
+  // and then either show the current lectures for that class or make a new one
+  navigateToLecturesForThisClass(className): void {
+       this.navCtrl.push(LecturesPPage);
+  }
 
+
+  // EVERYTHING FOR ADDING CLASSES INITIALLY
   classList: Array<any> = [];
   newClass = '';
   classesRef: any; // Reference that is frequenly used
@@ -79,18 +86,5 @@ export class ManagePPage {
     alert.present();
   }
 
-  setStatus(name) {
-    var currentStatus = this.checkedMap.get(name);
-    console.log("Currently: " + currentStatus + "; should become: " + !currentStatus);
-    if (currentStatus) // If not first time, just flip the status
-    {
-      this.checkedMap.set(name, !currentStatus);
-    }
-    else // First time
-    {
-      this.checkedMap.set(name, true);
-    }
-    console.log(this.checkedMap);
-  }
 
 }
