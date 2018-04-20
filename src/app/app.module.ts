@@ -15,6 +15,12 @@ import {LecturesPPage} from '../pages/lectures-p/lectures-p'
 import { ResultsPage} from "../pages/results/results";
 import {LoginPage} from "../pages/login/login";
 
+
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
+import { FirebaseProvider } from './../providers/firebase/firebase';
+
 var firebaseConfig = {
     apiKey: "AIzaSyAumOiHzaCRwzVbAU8HqmTVrBJRN3eUF0I",
     authDomain: "classconfusion.firebaseapp.com",
@@ -38,6 +44,8 @@ var firebaseConfig = {
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    AngularFireDatabaseModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule
@@ -56,6 +64,7 @@ var firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    FirebaseProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
