@@ -23,4 +23,27 @@
 	<h1> Create a new class</h1>
 	<h1>Also a list of classes they can select</h1>
 
+
+
+	<h3>Select the topics that you don't understand: </h3>
+  <ion-row>
+    <ion-col col-9>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="newTopic" placeholder="New Topic"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <button ion-button (click)="addTopic()">Add!</button>
+    </ion-col>
+  </ion-row>
+
+  <div *ngIf="ready">
+    <ion-list *ngFor="let topic of topicList">
+      <ion-item>
+        <ion-label>{{topic.name}}</ion-label>
+        <button ion-button item-end clear icon-only (click)="removeTopic(topic.name)" class="butt"><ion-icon name="close"></ion-icon></button>
+      </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>

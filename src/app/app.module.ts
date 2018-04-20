@@ -44,6 +44,8 @@ var firebaseConfig = {
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    AngularFireDatabaseModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule
@@ -62,6 +64,7 @@ var firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    FirebaseProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
