@@ -7,6 +7,7 @@ export class FirebaseProvider {
   constructor(public afd: AngularFireDatabase) {
   }
 
+  //for adding classes
   addClass(name) {
     this.afd.list('/classes').set(name,
     {
@@ -24,21 +25,23 @@ export class FirebaseProvider {
   }
 
 
-  // addLecture(name) {
-  //   this.afd.list('/classes').set(name,
-  //   {
-  //     name: name,
-  //   });
-  // }
 
-  // removeClass(name) {
-  //   this.afd.list('/classes').remove(name);
-  // }
+  //for adding lectures within classes
+  addLectures(className, lectureName) {
+    this.afd.list('/classes/' + className + '/lectures/').set(lectureName,
+    {
+      name: lectureName,
+    });
+  }
+
+  removeLectures(className, lectureName) {
+    this.afd.list('/classes/' + className + '/lectures/').remove(lectureName);
+  }
 
 
-  // getClasses() {
-  //   return this.afd.list('/classes');
-  // }
+  getLectures(className) {
+    return this.afd.list('/classes/' + className + '/lectures/');
+  }
 
   // getVoteCount() {
   //   return this.afd.list('/topics/' + name + '/voteCount');

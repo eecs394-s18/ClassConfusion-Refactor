@@ -17,6 +17,9 @@ export class ManagePPage {
     this.classesRef =  this.fbApp.database().ref('/classes/');
     this.getClasses(); // load up the topicList
     this.checkedMap = new Map([]);
+
+    // need this for lectures too
+
   }
 
   ionViewDidLoad() {
@@ -31,6 +34,9 @@ export class ManagePPage {
   // and then either show the current lectures for that class or make a new one
   navigateToLecturesForThisClass(className): void {
        this.navCtrl.push(LecturesPPage);
+       console.log(className);
+       // document.getElementById('prevClassName').innerHTML = className;
+
   }
 
 
@@ -39,9 +45,14 @@ export class ManagePPage {
   newClass = '';
   classesRef: any; // Reference that is frequenly used
   ready: boolean = false; // Check if topics are retrieved before loading list of checkboxes
-
   checkedMap: Map<string, boolean>;
 
+
+  // lectureList: Array<any> = [];
+  // newLecture = '';
+  // lecturesRef: any; // Reference that is frequenly used
+  // lecturesReady: boolean = false; // Check if topics are retrieved before loading list of checkboxes
+  // lecturesCheckedMap: Map<string, boolean>;
 
   getClasses() {
     this.ready = false;
@@ -77,6 +88,46 @@ export class ManagePPage {
     this.checkedMap.delete(name);
     this.getClasses();
   }
+
+
+
+ // FOR LECTURES =====================
+
+// getLectures(className) {
+//     this.ready = false;
+//     this.classList = []; // this doesn't work - wipe to prevent duplicates from appearing
+//     this.classesRef.on('value', (snapshot) => {
+//       snapshot.forEach((child) => {
+//         this.classList.push(child.val());
+//       });
+//     });
+//     console.log("[Alert] Retrieved lectures?? from Firebase.");
+//     this.ready = true; // Now ready to display...
+//   }
+
+//   addLectures(className) {
+//     if (this.newClass.length === 0) { return; } // Fix for issue #5
+//     this.classesRef.child(this.newClass).once('value', (snapshot) => {
+//       if (snapshot.exists()) {
+//         this.presentAlert();
+//       }
+//       else {
+//         this.ready = false;
+//         this.firebaseProvider.addClass(this.newClass);
+//         this.newClass = ""; // empty out the new class field
+//         this.getClasses();
+//       }
+//     });
+
+//   }
+
+//   removeLectures(className, lectureName) {
+//     this.ready = false;
+//     this.firebaseProvider.removeLectures(className, lectureName);
+//     this.checkedMap.delete(name);
+//     this.getLectures(className);
+//   }
+
 
   presentAlert() {
     let alert = this.alertCtrl.create({
