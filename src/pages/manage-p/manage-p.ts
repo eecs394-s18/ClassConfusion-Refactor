@@ -27,12 +27,7 @@ export class ManagePPage {
     console.log('ionViewDidLoad ManagePPage');
   }
 
-  navigateToLecturesPPage(): void {
-   		this.navCtrl.push(LecturesPPage);
-	}
-
-  // trying to make a function that will take the name of class clicked on
-  // and then either show the current lectures for that class or make a new one
+  // navigate to lecture page for that class by pushing next page and class name
   navigateToLecturesForThisClass(className): void {
        var currClass = className;
        this.navCtrl.push(LecturesPPage, {
@@ -69,7 +64,7 @@ export class ManagePPage {
     this.classList = [];
     this.classesRef.on('value', (snapshot) => {
         snapshot.forEach((child) => {
-            console.log(child.val())
+            // console.log(child.val())
             this.classList.push(child.val());
 
             });
@@ -107,45 +102,6 @@ export class ManagePPage {
     this.checkedMap.delete(name);
     this.getClasses();
   }
-
-
-
- // FOR LECTURES =====================
-
-// getLectures(className) {
-//     this.ready = false;
-//     this.classList = []; // this doesn't work - wipe to prevent duplicates from appearing
-//     this.classesRef.on('value', (snapshot) => {
-//       snapshot.forEach((child) => {
-//         this.classList.push(child.val());
-//       });
-//     });
-//     console.log("[Alert] Retrieved lectures?? from Firebase.");
-//     this.ready = true; // Now ready to display...
-//   }
-
-//   addLectures(className) {
-//     if (this.newClass.length === 0) { return; } // Fix for issue #5
-//     this.classesRef.child(this.newClass).once('value', (snapshot) => {
-//       if (snapshot.exists()) {
-//         this.presentAlert();
-//       }
-//       else {
-//         this.ready = false;
-//         this.firebaseProvider.addClass(this.newClass);
-//         this.newClass = ""; // empty out the new class field
-//         this.getClasses();
-//       }
-//     });
-
-//   }
-
-//   removeLectures(className, lectureName) {
-//     this.ready = false;
-//     this.firebaseProvider.removeLectures(className, lectureName);
-//     this.checkedMap.delete(name);
-//     this.getLectures(className);
-//   }
 
 
   presentAlert() {

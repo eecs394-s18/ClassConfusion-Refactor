@@ -17,10 +17,12 @@ export class LecturesPPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider, public alertCtrl: AlertController, private fbApp: FirebaseApp) {
 
     this.className = navParams.get('param1');
+
     console.log(this.className)
-    this.lecturesRef =  this.fbApp.database().ref('/classes' + this.className + '/lectures/');
+    this.lecturesRef =  this.fbApp.database().ref('/classes/' + this.className + '/lectures/');
     this.getLectures(); // load up the lecture list
     this.lecturesCheckedMap = new Map([]);
+
   }
 
   lectureList: Array<any> = [];
@@ -31,8 +33,10 @@ export class LecturesPPage {
   lecturesCheckedMap: Map<string, boolean>;
 
 
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LecturesPPage');
+    // console.log('ionViewDidLoad LecturesPPage');
+    document.getElementById('currClass').innerHTML = this.className;
   }
 
   navigateToResultsPage(): void {
@@ -48,7 +52,8 @@ export class LecturesPPage {
         this.lectureList.push(child.val());
       });
     });
-    console.log("[Alert] Retrieved lectures?? from Firebase.");
+    console.log(this.lectureList)
+    console.log("[Alert] Retrieved lectures from Firebase.");
     this.lecturesReady = true; // Now ready to display...
   }
 

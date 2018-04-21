@@ -12,7 +12,7 @@
 
 	<button ion-button (click)="navigateToResultsPage()">Results Page</button>
 
-	<p>On this page professors can: </p>
+	<!-- <p>On this page professors can: </p>
 	<ul>
 		<li>Add new lectures with some sort of ID</li>
 		<li>Remove or edit name of current lectures</li>
@@ -21,7 +21,10 @@
 		<li>Reset vote counts for any topics</li>
 		<li>No checkbox voting feature here</li>
 	</ul>
-
+ -->
+<h1> Current viewing lectures for class: <b><span id="currClass"></span></b></h1>
+<br>
+<h2>Create a new lecture or select an existing lecture to go to its list of topics: </h2>
 
 <ion-row>
     <ion-col col-9>
@@ -34,17 +37,19 @@
     </ion-col>
   </ion-row>
 
-  <div *ngIf="ready">
+  <div *ngIf="lecturesReady">
     <ion-list *ngFor="let lecture of lectureList">
       <ion-item>
         <ion-label>{{lecture.name}}</ion-label>
 
         <!-- <button ion-button item-end clear icon-only (click)="navigateToLecturesForThisClass(class.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button> -->
-        <button ion-button click()="navigateToResultsPage" class="butt"></button>
+        <button ion-button (click) ="navigateToResultsPage" class="butt"></button>
 
         <button ion-button item-end clear icon-only (click)="removeLectures(lecture.name)" class="butt"><ion-icon name="trash" color="danger"></ion-icon></button>
       </ion-item>
     </ion-list>
   </div>
+
+
 
 </ion-content>

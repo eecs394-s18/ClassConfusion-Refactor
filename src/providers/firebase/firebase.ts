@@ -28,19 +28,20 @@ export class FirebaseProvider {
 
   //for adding lectures within classes
   addLectures(className, lectureName) {
-    this.afd.list('/classes/' + className + '/lectures/').set(lectureName,
+    this.afd.list('/classes/' + className + '/lectures').set(lectureName,
     {
       name: lectureName,
+      date: 0
     });
   }
 
   removeLectures(className, lectureName) {
-    this.afd.list('/classes/' + className + '/lectures/').remove(lectureName);
+    this.afd.list('/classes/' + className + '/lectures').remove(lectureName);
   }
 
 
   getLectures(className) {
-    return this.afd.list('/classes/' + className + '/lectures/');
+    return this.afd.list('/classes/' + className + '/lectures');
   }
 
   // getVoteCount() {
