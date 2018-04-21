@@ -22,4 +22,29 @@
 		<li>No checkbox voting feature here</li>
 	</ul>
 
+
+<ion-row>
+    <ion-col col-9>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="newLecture" placeholder="New Lecture"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <button ion-button (click)="addLectures()">Add!</button>
+    </ion-col>
+  </ion-row>
+
+  <div *ngIf="ready">
+    <ion-list *ngFor="let lecture of lectureList">
+      <ion-item>
+        <ion-label>{{lecture.name}}</ion-label>
+
+        <!-- <button ion-button item-end clear icon-only (click)="navigateToLecturesForThisClass(class.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button> -->
+        <button ion-button click()="navigateToResultsPage" class="butt"></button>
+
+        <button ion-button item-end clear icon-only (click)="removeLectures(lecture.name)" class="butt"><ion-icon name="trash" color="danger"></ion-icon></button>
+      </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>

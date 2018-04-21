@@ -15,6 +15,7 @@ export class ManagePPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider, public alertCtrl: AlertController, private fbApp: FirebaseApp) {
 
     this.classesRef =  this.fbApp.database().ref('/classes/');
+    // this.initializer = true;
     this.getClasses(); // load up the topicList
     this.checkedMap = new Map([]);
 
@@ -33,11 +34,14 @@ export class ManagePPage {
   // trying to make a function that will take the name of class clicked on
   // and then either show the current lectures for that class or make a new one
   navigateToLecturesForThisClass(className): void {
-       this.navCtrl.push(LecturesPPage);
+       var currClass = className;
+       this.navCtrl.push(LecturesPPage, {
+         param1: currClass
+       });
        console.log(className);
        // document.getElementById('prevClassName').innerHTML = className;
+    }
 
-  }
 
 
   // EVERYTHING FOR ADDING CLASSES INITIALLY
@@ -46,7 +50,7 @@ export class ManagePPage {
   classesRef: any; // Reference that is frequenly used
   ready: boolean = false; // Check if topics are retrieved before loading list of checkboxes
   checkedMap: Map<string, boolean>;
-
+  // initializer: boolean = true;
 
   // lectureList: Array<any> = [];
   // newLecture = '';
@@ -54,19 +58,32 @@ export class ManagePPage {
   // lecturesReady: boolean = false; // Check if topics are retrieved before loading list of checkboxes
   // lecturesCheckedMap: Map<string, boolean>;
 
+
+  // I think this is something to do with pushing on the full list every time
+  // Something with how get classes is called at the end of addclasses and remove classes
+  // if we take it away we end up with an empty list
   getClasses() {
+    console.log('GETCLASSES CALLED')
+    // console.log(this.classList);
     this.ready = false;
-    this.classList = []; // this doesn't work - wipe to prevent duplicates from appearing
+    this.classList = [];
     this.classesRef.on('value', (snapshot) => {
-      snapshot.forEach((child) => {
-        this.classList.push(child.val());
+        snapshot.forEach((child) => {
+            console.log(child.val())
+            this.classList.push(child.val());
+
+            });
+
       });
-    });
+    console.log(this.classList);
     console.log("[Alert] Retrieved classes from Firebase.");
     this.ready = true; // Now ready to display...
-  }
+   }
+
 
   addClass() {
+    console.log('ADD CLASS CALLED')
+    // this.classList = [];
     if (this.newClass.length === 0) { return; } // Fix for issue #5
     this.classesRef.child(this.newClass).once('value', (snapshot) => {
       if (snapshot.exists()) {
@@ -83,6 +100,8 @@ export class ManagePPage {
   }
 
   removeClass(name) {
+    console.log('REMOVE CLASS CALLED')
+    // this.classList = [];
     this.ready = false;
     this.firebaseProvider.removeClass(name);
     this.checkedMap.delete(name);
