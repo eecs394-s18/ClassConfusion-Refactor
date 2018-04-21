@@ -15,40 +15,60 @@ export class ManagePPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider, public alertCtrl: AlertController, private fbApp: FirebaseApp) {
 
     this.classesRef =  this.fbApp.database().ref('/classes/');
+    // this.initializer = true;
     this.getClasses(); // load up the topicList
     this.checkedMap = new Map([]);
+
+    // need this for lectures too
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ManagePPage');
   }
 
-  navigateToLecturesPPage(): void {
-   		this.navCtrl.push(LecturesPPage);
-	}
+  // navigate to lecture page for that class by pushing next page and class name
+  navigateToLecturesForThisClass(className): void {
+       var currClass = className;
+       this.navCtrl.push(LecturesPPage, {
+         param1: currClass
+       });
+       console.log(className);
+    }
 
 
+  // EVERYTHING FOR ADDING CLASSES INITIALLY
   classList: Array<any> = [];
   newClass = '';
   classesRef: any; // Reference that is frequenly used
   ready: boolean = false; // Check if topics are retrieved before loading list of checkboxes
-
   checkedMap: Map<string, boolean>;
 
-
+  // I think this is something to do with pushing on the full list every time
+  // Something with how get classes is called at the end of addclasses and remove classes
+  // if we take it away we end up with an empty list
   getClasses() {
+    console.log('GETCLASSES CALLED')
+    // console.log(this.classList);
     this.ready = false;
-    this.classList = []; // this doesn't work - wipe to prevent duplicates from appearing
+    this.classList = [];
     this.classesRef.on('value', (snapshot) => {
-      snapshot.forEach((child) => {
-        this.classList.push(child.val());
+        snapshot.forEach((child) => {
+            // console.log(child.val())
+            this.classList.push(child.val());
+
+            });
+
       });
-    });
+    console.log(this.classList);
     console.log("[Alert] Retrieved classes from Firebase.");
     this.ready = true; // Now ready to display...
-  }
+   }
+
 
   addClass() {
+    console.log('ADD CLASS CALLED')
+    // this.classList = [];
     if (this.newClass.length === 0) { return; } // Fix for issue #5
     this.classesRef.child(this.newClass).once('value', (snapshot) => {
       if (snapshot.exists()) {
@@ -65,11 +85,14 @@ export class ManagePPage {
   }
 
   removeClass(name) {
+    console.log('REMOVE CLASS CALLED')
+    // this.classList = [];
     this.ready = false;
     this.firebaseProvider.removeClass(name);
     this.checkedMap.delete(name);
     this.getClasses();
   }
+
 
   presentAlert() {
     let alert = this.alertCtrl.create({
@@ -79,18 +102,5 @@ export class ManagePPage {
     alert.present();
   }
 
-  setStatus(name) {
-    var currentStatus = this.checkedMap.get(name);
-    console.log("Currently: " + currentStatus + "; should become: " + !currentStatus);
-    if (currentStatus) // If not first time, just flip the status
-    {
-      this.checkedMap.set(name, !currentStatus);
-    }
-    else // First time
-    {
-      this.checkedMap.set(name, true);
-    }
-    console.log(this.checkedMap);
-  }
 
 }

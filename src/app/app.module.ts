@@ -14,6 +14,8 @@ import {LecturesSPage} from '../pages/lectures-s/lectures-s'
 import {LecturesPPage} from '../pages/lectures-p/lectures-p'
 import { ResultsPage} from "../pages/results/results";
 import {LoginPage} from "../pages/login/login";
+import {TopicsPPage} from "../pages/topics-p/topics-p"
+import {TopicsSPage} from "../pages/topics-s/topics-s"
 
 
 import { HttpModule } from '@angular/http';
@@ -40,7 +42,9 @@ var firebaseConfig = {
     LecturesPPage,
     LecturesSPage,
     ResultsPage,
-    LoginPage
+    LoginPage,
+    TopicsPPage,
+    TopicsSPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,9 @@ var firebaseConfig = {
     LecturesSPage,
     LecturesPPage,
     ResultsPage,
-    LoginPage
+    LoginPage,
+    TopicsPPage,
+    TopicsSPage
   ],
   providers: [
     StatusBar,
