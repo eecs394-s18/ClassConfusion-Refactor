@@ -2,16 +2,28 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>results</ion-title>
+    <ion-title>Results</ion-title>
   </ion-navbar>
+  <ion-buttons end>
+      <button ion-button icon-only (click)="ionViewDidLoad()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
 
 </ion-header>
 
 
 <ion-content padding>
-	<p>
-		Both users can:
--View graphs on results page (make language neutral to student professor)
-</p>
+
+<ion-card>
+      <ion-card-header>
+        (Insert class and lecture name here using document.getelementbyid but its not working rn)
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #barCanvas></canvas>
+      </ion-card-content>
+ </ion-card>
+
+ <h3> Based on the voting, the topic that is least understood is: <b><span id="WorstTopic"></span></b></h3>
 
 </ion-content>

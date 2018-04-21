@@ -17,8 +17,8 @@ export class TopicsPPage {
 
   	this.lectureName = navParams.get('currLec');
   	this.className = navParams.get('currClass');
-    console.log(this.lectureName)
-    console.log(this.className)
+    console.log('CURRENT LECTURE: ' + this.lectureName)
+    console.log('CURRENT CLASS: ' + this.className)
     this.topicsRef =  this.fbApp.database().ref('/classes/' + this.className + '/lectures/' + this.lectureName + '/topics/');
     this.getTopics(); // load up the lecture list
     this.topicsCheckedMap = new Map([]);
@@ -40,13 +40,14 @@ export class TopicsPPage {
   }
 
   // this may take topicName or something but I'm picturing the next page with graphs per lecture
-  navigateToResultsForThisLecture(lectureName): void {
-       var currLecture = lectureName;
+ navigateToResultsForThisLectureProfessor(): void {
+       var currLecture = this.lectureName;
+       var currClass = this.className;
        this.navCtrl.push(ResultsPage, {
-         currLec: currLecture
+         currLec: currLecture,
+         currClass: currClass
        });
     }
-
   getTopics() {
     this.topicsReady = false;
     this.topicList = []; // this doesn't work - wipe to prevent duplicates from appearing

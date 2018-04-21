@@ -15,8 +15,8 @@ export class TopicsSPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider, public alertCtrl: AlertController, private fbApp: FirebaseApp) {
   	this.lectureName = navParams.get('currLec');
   	this.className = navParams.get('currClass');
-    console.log(this.lectureName)
-    console.log(this.className)
+    console.log('CURRENT LECTURE: ' + this.lectureName)
+    console.log('CURRENT CLASS: ' + this.className)
     this.topicsRef =  this.fbApp.database().ref('/classes/' + this.className + '/lectures/' + this.lectureName + '/topics/');
     this.getTopics(); // load up the lecture list
     this.topicsCheckedMap = new Map([]);
@@ -38,10 +38,12 @@ export class TopicsSPage {
   }
 
   // this may take topicName or something but I'm picturing the next page with graphs per lecture
-  navigateToResultsForThisLectureStudent(lectureName): void {
-       var currLecture = lectureName;
+  navigateToResultsForThisLectureStudent(): void {
+       var currLecture = this.lectureName;
+       var currClass = this.className;
        this.navCtrl.push(ResultsPage, {
-         currLec: currLecture
+         currLec: currLecture,
+         currClass: currClass
        });
     }
 
@@ -84,29 +86,6 @@ export class TopicsSPage {
 
     this.getTopics();
   }
-
-  // addTopics() {
-  //   if (this.newTopic.length === 0) { return; } // Fix for issue #5
-  //   this.topicsRef.child(this.newTopic).once('value', (snapshot) => {
-  //     if (snapshot.exists()) {
-  //       this.presentAlert();
-  //     }
-  //     else {
-  //       this.topicsReady = false;
-  //       this.firebaseProvider.addTopics(this.className, this.lectureName, this.newTopic);
-  //       this.newTopic = ""; // empty out the new class field
-  //       this.getTopics();
-  //     }
-  //   });
-
-  // }
-
-  // removeTopics(topicName) {
-  //   this.topicsReady = false;
-  //   this.firebaseProvider.removeTopics(this.className, this.lectureName, topicName);
-  //   this.topicsCheckedMap.delete(topicName);
-  //   this.getTopics();
-  // }
 
 
   presentAlert() {
