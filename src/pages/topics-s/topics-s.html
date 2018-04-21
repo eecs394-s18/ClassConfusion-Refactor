@@ -21,6 +21,8 @@
       <ion-item>
         <ion-label>{{topic.name}}</ion-label>
 
+        <ion-checkbox [(ngModel)]="topicsCheckedMap[topic.name]" (ionChange)="updateVote(topic.name);">
+        </ion-checkbox>
         <button ion-button item-end clear icon-only (click)="navigateToResultsForThisLectureStudent(topic.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>
         <<!-- button ion-button (click) ="navigateToResultsPage" class="butt"></button>
  -->

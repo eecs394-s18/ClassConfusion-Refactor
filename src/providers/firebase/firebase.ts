@@ -50,7 +50,7 @@ export class FirebaseProvider {
     this.afd.list('/classes/' + className + '/lectures/' + lectureName + '/topics').set(topicName,
     {
       name: topicName,
-      date: 0
+      voteCount: 0
     });
   }
 
