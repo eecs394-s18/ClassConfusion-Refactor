@@ -66,30 +66,6 @@ export class LecturesSPage {
     this.lecturesReady = true; // Now ready to display...
   }
 
-  // addLectures() {
-  //   if (this.newLecture.length === 0) { return; } // Fix for issue #5
-  //   this.lecturesRef.child(this.newLecture).once('value', (snapshot) => {
-  //     if (snapshot.exists()) {
-  //       this.presentAlert();
-  //     }
-  //     else {
-  //       this.lecturesReady = false;
-  //       this.firebaseProvider.addLectures(this.className, this.newLecture);
-  //       this.newLecture = ""; // empty out the new class field
-  //       this.getLectures();
-  //     }
-  //   });
-
-  // }
-
-  // removeLectures(lectureName) {
-  //   this.lecturesReady = false;
-  //   this.firebaseProvider.removeLectures(this.className, lectureName);
-  //   this.lecturesCheckedMap.delete(lectureName);
-  //   this.getLectures();
-  // }
-
-
   presentAlert() {
     let alert = this.alertCtrl.create({
       title: 'This item is already in the list!',
