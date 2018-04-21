@@ -1,14 +1,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>classes-s</ion-title>
+    <ion-title>Student: View Classes</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<button ion-button (click)="navigateToLecturesSPage()">STUDENT lecture page</button>
+	<!-- <button ion-button (click)="navigateToLecturesSPage()">STUDENT lecture page</button> -->
 	<p>
 		On this page <b>students </b> can:
 	</p>
@@ -19,9 +19,20 @@
 	</ul>
 
 	<!-- FILLER - DO THIS!!! -->
-	<h1> Search for a course and add it to your schedule here: </h1>
+	<h2> Search for a course and add it to your schedule here: TODO</h2>
 
-	<h1> Select an already-added class to view its lectures</h1>
+	<h1> Select an already-added class to view its lectures:</h1>
+	<div *ngIf="ready">
+    <ion-list *ngFor="let class of classList">
+      <ion-item>
+        <ion-label>{{class.name}}</ion-label>
+
+        <button ion-button item-end clear icon-only (click)="navigateToLecturesForThisClassStudent(class.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>
+
+
+      </ion-item>
+    </ion-list>
+  </div>
 
 
 </ion-content>

@@ -15,11 +15,8 @@ export class ManagePPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider, public alertCtrl: AlertController, private fbApp: FirebaseApp) {
 
     this.classesRef =  this.fbApp.database().ref('/classes/');
-    // this.initializer = true;
     this.getClasses(); // load up the topicList
     this.checkedMap = new Map([]);
-
-    // need this for lectures too
 
   }
 
