@@ -44,8 +44,27 @@ export class FirebaseProvider {
     return this.afd.list('/classes/' + className + '/lectures');
   }
 
-  // getVoteCount() {
-  //   return this.afd.list('/topics/' + name + '/voteCount');
-  // }
+
+  //for adding topics within lectures within classes
+  addTopics(className, lectureName, topicName) {
+    this.afd.list('/classes/' + className + '/lectures/' + lectureName + '/topics').set(topicName,
+    {
+      name: topicName,
+      date: 0
+    });
+  }
+
+  removeTopics(className, lectureName, topicName) {
+    this.afd.list('/classes/' + className + '/lectures/' + lectureName + '/topics').remove(topicName);
+  }
+
+
+  getTopics(className, lectureName) {
+    return this.afd.list('/classes/' + className + '/lectures/' + lectureName + '/topics');
+  }
+
+  getVoteCount(className, lectureName, topicName) {
+    return this.afd.list('/classes/' + className + '/lectures/' + lectureName +'/topics/' + topicName + '/voteCount');
+  }
 
 }

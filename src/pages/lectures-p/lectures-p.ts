@@ -5,7 +5,7 @@ import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { AlertController } from 'ionic-angular';
 import { FirebaseApp } from 'angularfire2';
 import {ManagePPage} from '../manage-p/manage-p';
-
+import {TopicsPPage} from "../topics-p/topics-p"
 
 @IonicPage()
 @Component({
@@ -17,7 +17,6 @@ export class LecturesPPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider, public alertCtrl: AlertController, private fbApp: FirebaseApp) {
 
     this.className = navParams.get('param1');
-
     console.log(this.className)
     this.lecturesRef =  this.fbApp.database().ref('/classes/' + this.className + '/lectures/');
     this.getLectures(); // load up the lecture list
@@ -33,15 +32,20 @@ export class LecturesPPage {
   lecturesCheckedMap: Map<string, boolean>;
 
 
-
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad LecturesPPage');
     document.getElementById('currClass').innerHTML = this.className;
   }
 
-  navigateToResultsPage(): void {
-   		this.navCtrl.push(ResultsPage);
-	}
+
+  navigateToTopicsForThisLecture(lectureName): void {
+       var currLecture = lectureName;
+       var currClass = this.className;
+       this.navCtrl.push(TopicsPPage, {
+         currLec: currLecture,
+         currClass: currClass
+       });
+       console.log('Lecture we clicked: ' + currLecture);
+    }
 
 
   getLectures() {

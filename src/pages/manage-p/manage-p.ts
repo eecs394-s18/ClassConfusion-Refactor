@@ -34,9 +34,7 @@ export class ManagePPage {
          param1: currClass
        });
        console.log(className);
-       // document.getElementById('prevClassName').innerHTML = className;
     }
-
 
 
   // EVERYTHING FOR ADDING CLASSES INITIALLY
@@ -45,14 +43,6 @@ export class ManagePPage {
   classesRef: any; // Reference that is frequenly used
   ready: boolean = false; // Check if topics are retrieved before loading list of checkboxes
   checkedMap: Map<string, boolean>;
-  // initializer: boolean = true;
-
-  // lectureList: Array<any> = [];
-  // newLecture = '';
-  // lecturesRef: any; // Reference that is frequenly used
-  // lecturesReady: boolean = false; // Check if topics are retrieved before loading list of checkboxes
-  // lecturesCheckedMap: Map<string, boolean>;
-
 
   // I think this is something to do with pushing on the full list every time
   // Something with how get classes is called at the end of addclasses and remove classes
