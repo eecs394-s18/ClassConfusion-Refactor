@@ -1,22 +1,35 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>lectures-s</ion-title>
+    <ion-title>Student: View Lectures</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<button ion-button (click)="navigateToResultsPage()">Results Page</button>
 
-	<p>On this page students can: </p>
+	<!-- <button ion-button (click)="navigateToResultsPage()">Results Page</button> -->
+
+	<!-- <p>On this page students can: </p>
 	<ul>
 		<li>View lectures of the class they clicked on</li>
 		<li>View topics in dropdown from the lecture list</li>
 		<li>Check topics they're confused about</li>
 		<li>No permissions for edit/deleting lectures or topics</li>
 		<li>Potentially a comment box per topic that you could open up?</li>
-	</ul>
+	</ul> -->
+
+<h1>Select a lecture from the list to vote on its topics: </h1>
+	<div *ngIf="lecturesReady">
+    <ion-list *ngFor="let lecture of lectureList">
+      <ion-item>
+        <ion-label>{{lecture.name}}</ion-label>
+
+        <button ion-button item-end clear icon-only (click)="navigateToTopicsForThisLectureStudent(lecture.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>
+
+      </ion-item>
+    </ion-list>
+  </div>
 
 </ion-content>
