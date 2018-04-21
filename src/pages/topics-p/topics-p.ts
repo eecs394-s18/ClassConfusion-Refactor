@@ -4,7 +4,6 @@ import { ResultsPage} from "../results/results";
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { AlertController } from 'ionic-angular';
 import { FirebaseApp } from 'angularfire2';
-import {ManagePPage} from '../manage-p/manage-p';
 
 
 @IonicPage()

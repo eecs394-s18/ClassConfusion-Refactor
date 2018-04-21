@@ -85,8 +85,8 @@ var HomePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lectures_s_lectures_s__ = __webpack_require__(141);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__(18);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -186,7 +186,7 @@ var ClassesSPage = /** @class */ (function () {
     };
     ClassesSPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-classes-s',template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/classes-s/classes-s.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Student: View Classes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n	<!-- <button ion-button (click)="navigateToLecturesSPage()">STUDENT lecture page</button> -->\n	<p>\n		On this page <b>students </b> can:\n	</p>\n	<ul>\n		<li> Query for course</li>\n		<li> Add course to their schedule</li>\n		<li> View and select classes currently on their schedule</li>\n	</ul>\n\n	<!-- FILLER - DO THIS!!! -->\n	<h2> Search for a course and add it to your schedule here: TODO</h2>\n\n	<h1> Select an already-added class to view its lectures:</h1>\n	<div *ngIf="ready">\n    <ion-list *ngFor="let class of classList">\n      <ion-item>\n        <ion-label>{{class.name}}</ion-label>\n\n        <button ion-button item-end clear icon-only (click)="navigateToLecturesForThisClassStudent(class.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>\n\n\n      </ion-item>\n    </ion-list>\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/classes-s/classes-s.html"*/,
+            selector: 'page-classes-s',template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/classes-s/classes-s.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Student: View Classes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n	<!-- <button ion-button (click)="navigateToLecturesSPage()">STUDENT lecture page</button> -->\n	<!-- <p>\n		On this page <b>students </b> can:\n	</p> -->\n<!-- 	<ul>\n		<li> Query for course</li>\n		<li> Add course to their schedule</li>\n		<li> View and select classes currently on their schedule</li>\n	</ul> -->\n\n	<!-- FILLER - DO THIS!!! -->\n	<h2> Search for a course and add it to your schedule here: TODO</h2>\n\n	<h1> Select an already-added class to view its lectures:</h1>\n	<div *ngIf="ready">\n    <ion-list *ngFor="let class of classList">\n      <ion-item>\n        <ion-label>{{class.name}}</ion-label>\n\n        <button ion-button item-end clear icon-only (click)="navigateToLecturesForThisClassStudent(class.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>\n\n\n      </ion-item>\n    </ion-list>\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/classes-s/classes-s.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__["a" /* FirebaseProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4_angularfire2__["b" /* FirebaseApp */]])
     ], ClassesSPage);
@@ -204,9 +204,9 @@ var ClassesSPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LecturesSPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__results_results__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__results_results__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__topics_s_topics_s__ = __webpack_require__(142);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -242,7 +242,7 @@ var LecturesSPage = /** @class */ (function () {
         this.lecturesCheckedMap = new Map([]);
     }
     LecturesSPage.prototype.ionViewDidLoad = function () {
-        document.getElementById('currClass').innerHTML = this.className;
+        // document.getElementById('currClass').innerHTML = this.className;
     };
     LecturesSPage.prototype.navigateToResultsPage = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__results_results__["a" /* ResultsPage */]);
@@ -316,6 +316,9 @@ var LecturesSPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TopicsSPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__results_results__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__(18);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -327,25 +330,88 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/**
- * Generated class for the TopicsSPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
+
+
+
 var TopicsSPage = /** @class */ (function () {
-    function TopicsSPage(navCtrl, navParams) {
+    function TopicsSPage(navCtrl, navParams, firebaseProvider, alertCtrl, fbApp) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.firebaseProvider = firebaseProvider;
+        this.alertCtrl = alertCtrl;
+        this.fbApp = fbApp;
+        this.topicList = [];
+        this.newTopic = '';
+        this.lectureName = '';
+        this.className = '';
+        this.topicsReady = false; // Check if topics are retrieved before loading list of checkboxes
+        this.lectureName = navParams.get('currLec');
+        this.className = navParams.get('currClass');
+        console.log(this.lectureName);
+        console.log(this.className);
+        this.topicsRef = this.fbApp.database().ref('/classes/' + this.className + '/lectures/' + this.lectureName + '/topics/');
+        this.getTopics(); // load up the lecture list
+        this.topicsCheckedMap = new Map([]);
     }
+    // buggy
     TopicsSPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad TopicsSPage');
+        // not working for some weird reason
+        // document.getElementById('currLecture').innerHTML = this.navParams.get('currLec');
+        // document.getElementById('currClass').innerHTML = this.className;
+    };
+    // this may take topicName or something but I'm picturing the next page with graphs per lecture
+    TopicsSPage.prototype.navigateToResultsForThisLectureStudent = function (lectureName) {
+        var currLecture = lectureName;
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__results_results__["a" /* ResultsPage */], {
+            currLec: currLecture
+        });
+    };
+    TopicsSPage.prototype.getTopics = function () {
+        var _this = this;
+        this.topicsReady = false;
+        this.topicList = []; // this doesn't work - wipe to prevent duplicates from appearing
+        this.topicsRef.on('value', function (snapshot) {
+            snapshot.forEach(function (child) {
+                _this.topicList.push(child.val());
+            });
+        });
+        console.log(this.topicList);
+        console.log("[Alert] Retrieved topics from Firebase.");
+        this.topicsReady = true; // Now ready to display...
+    };
+    // addTopics() {
+    //   if (this.newTopic.length === 0) { return; } // Fix for issue #5
+    //   this.topicsRef.child(this.newTopic).once('value', (snapshot) => {
+    //     if (snapshot.exists()) {
+    //       this.presentAlert();
+    //     }
+    //     else {
+    //       this.topicsReady = false;
+    //       this.firebaseProvider.addTopics(this.className, this.lectureName, this.newTopic);
+    //       this.newTopic = ""; // empty out the new class field
+    //       this.getTopics();
+    //     }
+    //   });
+    // }
+    // removeTopics(topicName) {
+    //   this.topicsReady = false;
+    //   this.firebaseProvider.removeTopics(this.className, this.lectureName, topicName);
+    //   this.topicsCheckedMap.delete(topicName);
+    //   this.getTopics();
+    // }
+    TopicsSPage.prototype.presentAlert = function () {
+        var alert = this.alertCtrl.create({
+            title: 'This item is already in the list!',
+            buttons: ['Dismiss']
+        });
+        alert.present();
     };
     TopicsSPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-topics-s',template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-s/topics-s.html"*/'<!--\n  Generated template for the TopicsSPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>topics-s</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-s/topics-s.html"*/,
+            selector: 'page-topics-s',template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-s/topics-s.html"*/'<!--\n  Generated template for the TopicsSPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Student: View and Vote</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n	<h1> View topics from that lecture. Check the box on the left if you are confused about a topic!</h1>\n	<div *ngIf="topicsReady">\n    <ion-list *ngFor="let topic of topicList">\n      <ion-item>\n        <ion-label>{{topic.name}}</ion-label>\n\n        <button ion-button item-end clear icon-only (click)="navigateToResultsForThisLectureStudent(topic.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>\n        <<!-- button ion-button (click) ="navigateToResultsPage" class="butt"></button>\n -->\n        <!-- <button ion-button item-end clear icon-only (click)="removeTopics(topics.name)" class="butt"><ion-icon name="trash" color="danger"></ion-icon></button -->>\n      </ion-item>\n    </ion-list>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-s/topics-s.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__["a" /* FirebaseProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4_angularfire2__["b" /* FirebaseApp */]])
     ], TopicsSPage);
     return TopicsSPage;
 }());
@@ -361,8 +427,8 @@ var TopicsSPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LecturesPPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_firebase_firebase__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_firebase_firebase__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__topics_p_topics_p__ = __webpack_require__(144);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -471,9 +537,9 @@ var LecturesPPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TopicsPPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__results_results__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__results_results__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__(18);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -568,10 +634,9 @@ var TopicsPPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-topics-p',template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-p/topics-p.html"*/'\n<ion-header>\n\n  <ion-navbar>\n  	<!-- for some reason innerHTML isn\'t letting me send the lecture ? -->\n    <ion-title>Professor: Topics for ...(bug) <span id="currClass"></span></ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<h1> insert button here to get to results page for associated lecture with this topics</h1>\n\n\n<ion-content padding>\n	<h2>Create a new topic and view current topics: </h2>\n\n<ion-row>\n    <ion-col col-9>\n      <ion-item>\n        <ion-input type="text" [(ngModel)]="newTopic" placeholder="New Topic"></ion-input>\n      </ion-item>\n    </ion-col>\n    <ion-col>\n      <button ion-button (click)="addTopics()">Add!</button>\n    </ion-col>\n  </ion-row>\n\n  <div *ngIf="topicsReady">\n    <ion-list *ngFor="let topic of topicList">\n      <ion-item>\n        <ion-label>{{topic.name}}</ion-label>\n\n        <button ion-button item-end clear icon-only (click)="navigateToResultsForThisLecture(topic.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>\n        <<!-- button ion-button (click) ="navigateToResultsPage" class="butt"></button>\n -->\n        <button ion-button item-end clear icon-only (click)="removeTopics(topics.name)" class="butt"><ion-icon name="trash" color="danger"></ion-icon></button>\n      </ion-item>\n    </ion-list>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-p/topics-p.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__["a" /* FirebaseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__["a" /* FirebaseProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4_angularfire2__["b" /* FirebaseApp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angularfire2__["b" /* FirebaseApp */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__["a" /* FirebaseProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4_angularfire2__["b" /* FirebaseApp */]])
     ], TopicsPPage);
     return TopicsPPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=topics-p.js.map
@@ -724,8 +789,8 @@ var LoginPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lectures_p_lectures_p__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__(18);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -927,7 +992,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(277);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(280);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_auth__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(429);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(117);
@@ -935,13 +1000,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_manage_p_manage_p__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_lectures_s_lectures_s__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_lectures_p_lectures_p__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_results_results__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_results_results__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_login_login__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_topics_p_topics_p__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_topics_s_topics_s__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_http__ = __webpack_require__(430);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_angularfire2_database_deprecated__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_firebase_firebase__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_firebase_firebase__ = __webpack_require__(39);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1040,54 +1105,7 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 429:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(280);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(277);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(117);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var MyApp = /** @class */ (function () {
-    // rootPage:any = LoginPage;
-    function MyApp(platform, statusBar, splashScreen) {
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */];
-        platform.ready().then(function () {
-            // Okay, so the platform is ready and our plugins are available.
-            // Here you can do any higher level native things you might need.
-            statusBar.styleDefault();
-            splashScreen.hide();
-        });
-    }
-    MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/app/app.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
-    ], MyApp);
-    return MyApp;
-}());
-
-//# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
-/***/ 44:
+/***/ 39:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1161,7 +1179,54 @@ var FirebaseProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 77:
+/***/ 429:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(117);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var MyApp = /** @class */ (function () {
+    // rootPage:any = LoginPage;
+    function MyApp(platform, statusBar, splashScreen) {
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */];
+        platform.ready().then(function () {
+            // Okay, so the platform is ready and our plugins are available.
+            // Here you can do any higher level native things you might need.
+            statusBar.styleDefault();
+            splashScreen.hide();
+        });
+    }
+    MyApp = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/app/app.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+    ], MyApp);
+    return MyApp;
+}());
+
+//# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 57:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
