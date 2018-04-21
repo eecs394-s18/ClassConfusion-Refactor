@@ -380,6 +380,31 @@ var TopicsSPage = /** @class */ (function () {
         console.log("[Alert] Retrieved topics from Firebase.");
         this.topicsReady = true; // Now ready to display...
     };
+    TopicsSPage.prototype.setStatus = function (topicName) {
+        var currentStatus = this.topicsCheckedMap.get(name);
+        if (currentStatus) {
+            this.topicsCheckedMap.set(name, !currentStatus);
+        }
+        else {
+            this.topicsCheckedMap.set(name, true);
+        }
+    };
+    TopicsSPage.prototype.updateVote = function (topicName) {
+        this.setStatus(topicName);
+        var voteChange = 0;
+        if (this.topicsCheckedMap.get(topicName)) {
+            voteChange = 1;
+        }
+        else {
+            voteChange = -1;
+        }
+        var topicRef = this.topicsRef.child(topicName);
+        topicRef.transaction(function (currentTopic) {
+            currentTopic.voteCount += voteChange;
+            return currentTopic;
+        });
+        this.getTopics();
+    };
     // addTopics() {
     //   if (this.newTopic.length === 0) { return; } // Fix for issue #5
     //   this.topicsRef.child(this.newTopic).once('value', (snapshot) => {
@@ -409,11 +434,12 @@ var TopicsSPage = /** @class */ (function () {
     };
     TopicsSPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-topics-s',template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-s/topics-s.html"*/'<!--\n  Generated template for the TopicsSPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Student: View and Vote</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n	<h1> View topics from that lecture. Check the box on the left if you are confused about a topic!</h1>\n	<div *ngIf="topicsReady">\n    <ion-list *ngFor="let topic of topicList">\n      <ion-item>\n        <ion-label>{{topic.name}}</ion-label>\n\n        <button ion-button item-end clear icon-only (click)="navigateToResultsForThisLectureStudent(topic.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>\n        <<!-- button ion-button (click) ="navigateToResultsPage" class="butt"></button>\n -->\n        <!-- <button ion-button item-end clear icon-only (click)="removeTopics(topics.name)" class="butt"><ion-icon name="trash" color="danger"></ion-icon></button -->>\n      </ion-item>\n    </ion-list>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-s/topics-s.html"*/,
+            selector: 'page-topics-s',template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-s/topics-s.html"*/'<!--\n  Generated template for the TopicsSPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Student: View and Vote</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n	<h1> View topics from that lecture. Check the box on the left if you are confused about a topic!</h1>\n	<div *ngIf="topicsReady">\n    <ion-list *ngFor="let topic of topicList">\n      <ion-item>\n        <ion-label>{{topic.name}}</ion-label>\n\n        <ion-checkbox [(ngModel)]="topicsCheckedMap[topic.name]" (ionChange)="updateVote(topic.name);">\n        </ion-checkbox>\n        <button ion-button item-end clear icon-only (click)="navigateToResultsForThisLectureStudent(topic.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>\n        <<!-- button ion-button (click) ="navigateToResultsPage" class="butt"></button>\n -->\n        <!-- <button ion-button item-end clear icon-only (click)="removeTopics(topics.name)" class="butt"><ion-icon name="trash" color="danger"></ion-icon></button -->>\n      </ion-item>\n    </ion-list>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-s/topics-s.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__["a" /* FirebaseProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4_angularfire2__["b" /* FirebaseApp */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__["a" /* FirebaseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__["a" /* FirebaseProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4_angularfire2__["b" /* FirebaseApp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angularfire2__["b" /* FirebaseApp */]) === "function" && _e || Object])
     ], TopicsSPage);
     return TopicsSPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=topics-s.js.map
@@ -617,11 +643,36 @@ var TopicsPPage = /** @class */ (function () {
             }
         });
     };
+    TopicsPPage.prototype.updateVote = function (topicName) {
+        this.setStatus(topicName);
+        var voteChange = 0;
+        if (this.topicsCheckedMap.get(topicName)) {
+            voteChange = 1;
+        }
+        else {
+            voteChange = -1;
+        }
+        var topicRef = this.topicsRef.child(topicName);
+        topicRef.transaction(function (currentTopic) {
+            currentTopic.voteCount += voteChange;
+            return currentTopic;
+        });
+        this.getTopics();
+    };
     TopicsPPage.prototype.removeTopics = function (topicName) {
         this.topicsReady = false;
         this.firebaseProvider.removeTopics(this.className, this.lectureName, topicName);
         this.topicsCheckedMap.delete(topicName);
         this.getTopics();
+    };
+    TopicsPPage.prototype.setStatus = function (topicName) {
+        var currentStatus = this.topicsCheckedMap.get(name);
+        if (currentStatus) {
+            this.topicsCheckedMap.set(name, !currentStatus);
+        }
+        else {
+            this.topicsCheckedMap.set(name, true);
+        }
     };
     TopicsPPage.prototype.presentAlert = function () {
         var alert = this.alertCtrl.create({
@@ -632,11 +683,12 @@ var TopicsPPage = /** @class */ (function () {
     };
     TopicsPPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-topics-p',template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-p/topics-p.html"*/'\n<ion-header>\n\n  <ion-navbar>\n  	<!-- for some reason innerHTML isn\'t letting me send the lecture ? -->\n    <ion-title>Professor: Topics for ...(bug) <span id="currClass"></span></ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<h1> insert button here to get to results page for associated lecture with this topics</h1>\n\n\n<ion-content padding>\n	<h2>Create a new topic and view current topics: </h2>\n\n<ion-row>\n    <ion-col col-9>\n      <ion-item>\n        <ion-input type="text" [(ngModel)]="newTopic" placeholder="New Topic"></ion-input>\n      </ion-item>\n    </ion-col>\n    <ion-col>\n      <button ion-button (click)="addTopics()">Add!</button>\n    </ion-col>\n  </ion-row>\n\n  <div *ngIf="topicsReady">\n    <ion-list *ngFor="let topic of topicList">\n      <ion-item>\n        <ion-label>{{topic.name}}</ion-label>\n\n        <button ion-button item-end clear icon-only (click)="navigateToResultsForThisLecture(topic.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>\n        <<!-- button ion-button (click) ="navigateToResultsPage" class="butt"></button>\n -->\n        <button ion-button item-end clear icon-only (click)="removeTopics(topics.name)" class="butt"><ion-icon name="trash" color="danger"></ion-icon></button>\n      </ion-item>\n    </ion-list>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-p/topics-p.html"*/,
+            selector: 'page-topics-p',template:/*ion-inline-start:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-p/topics-p.html"*/'\n<ion-header>\n\n  <ion-navbar>\n  	<!-- for some reason innerHTML isn\'t letting me send the lecture ? -->\n    <ion-title>Professor: Topics for ...(bug) <span id="currClass"></span></ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<h1> insert button here to get to results page for associated lecture with this topics</h1>\n\n\n<ion-content padding>\n	<h2>Create a new topic and view current topics: </h2>\n\n<ion-row>\n    <ion-col col-9>\n      <ion-item>\n        <ion-input type="text" [(ngModel)]="newTopic" placeholder="New Topic"></ion-input>\n      </ion-item>\n    </ion-col>\n    <ion-col>\n      <button ion-button (click)="addTopics()">Add!</button>\n    </ion-col>\n  </ion-row>\n\n  <div *ngIf="topicsReady">\n    <ion-list *ngFor="let topic of topicList">\n      <ion-item>\n        <ion-label>{{topic.name}}</ion-label>\n\n\n        <button ion-button item-end clear icon-only (click)="navigateToResultsForThisLecture(topic.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>\n        <<!-- button ion-button (click) ="navigateToResultsPage" class="butt"></button>\n -->\n        <button ion-button item-end clear icon-only (click)="removeTopics(topics.name)" class="butt"><ion-icon name="trash" color="danger"></ion-icon></button>\n      </ion-item>\n    </ion-list>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/juliawilkins/Desktop/NU2018/spring/eecs394/ClassConfusion-Refactor/src/pages/topics-p/topics-p.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__["a" /* FirebaseProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_4_angularfire2__["b" /* FirebaseApp */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__["a" /* FirebaseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_firebase_firebase__["a" /* FirebaseProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4_angularfire2__["b" /* FirebaseApp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angularfire2__["b" /* FirebaseApp */]) === "function" && _e || Object])
     ], TopicsPPage);
     return TopicsPPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=topics-p.js.map
@@ -1156,7 +1208,7 @@ var FirebaseProvider = /** @class */ (function () {
     FirebaseProvider.prototype.addTopics = function (className, lectureName, topicName) {
         this.afd.list('/classes/' + className + '/lectures/' + lectureName + '/topics').set(topicName, {
             name: topicName,
-            date: 0
+            voteCount: 0
         });
     };
     FirebaseProvider.prototype.removeTopics = function (className, lectureName, topicName) {
@@ -1170,9 +1222,10 @@ var FirebaseProvider = /** @class */ (function () {
     };
     FirebaseProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database_deprecated__["a" /* AngularFireDatabase */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database_deprecated__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database_deprecated__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
     ], FirebaseProvider);
     return FirebaseProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=firebase.js.map

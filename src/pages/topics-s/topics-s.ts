@@ -58,6 +58,33 @@ export class TopicsSPage {
     this.topicsReady = true; // Now ready to display...
   }
 
+  setStatus(topicName) {
+    var currentStatus = this.topicsCheckedMap.get(name);
+    if (currentStatus) // If not first time, just flip the status
+    {
+      this.topicsCheckedMap.set(name, !currentStatus);
+    }
+    else // First time
+    {
+      this.topicsCheckedMap.set(name, true);
+    }
+  }
+
+  updateVote(topicName) {
+    this.setStatus(topicName);
+    var voteChange = 0;
+    if (this.topicsCheckedMap.get(topicName)) { voteChange = 1; }
+    else { voteChange = -1; }
+
+    var topicRef = this.topicsRef.child(topicName);
+    topicRef.transaction(function(currentTopic) {
+      currentTopic.voteCount += voteChange;
+      return currentTopic;
+    });
+
+    this.getTopics();
+  }
+
   // addTopics() {
   //   if (this.newTopic.length === 0) { return; } // Fix for issue #5
   //   this.topicsRef.child(this.newTopic).once('value', (snapshot) => {

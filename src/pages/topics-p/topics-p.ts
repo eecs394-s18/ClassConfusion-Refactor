@@ -76,12 +76,40 @@ export class TopicsPPage {
 
   }
 
+  updateVote(topicName) {
+    this.setStatus(topicName);
+    var voteChange = 0;
+    if (this.topicsCheckedMap.get(topicName)) { voteChange = 1; }
+    else { voteChange = -1; }
+
+    var topicRef = this.topicsRef.child(topicName);
+    topicRef.transaction(function(currentTopic) {
+      currentTopic.voteCount += voteChange;
+      return currentTopic;
+    });
+
+    this.getTopics();
+  }
+
   removeTopics(topicName) {
     this.topicsReady = false;
     this.firebaseProvider.removeTopics(this.className, this.lectureName, topicName);
     this.topicsCheckedMap.delete(topicName);
     this.getTopics();
   }
+
+  setStatus(topicName) {
+    var currentStatus = this.topicsCheckedMap.get(name);
+    if (currentStatus) // If not first time, just flip the status
+    {
+      this.topicsCheckedMap.set(name, !currentStatus);
+    }
+    else // First time
+    {
+      this.topicsCheckedMap.set(name, true);
+    }
+  }
+
 
 
   presentAlert() {
