@@ -6,7 +6,7 @@ import { AlertController } from 'ionic-angular';
 import { FirebaseApp } from 'angularfire2';
 import {ClassesSPage} from '../classes-s/classes-s';
 import {TopicsSPage} from "../topics-s/topics-s"
-
+import {HomePage} from "../home/home"
 
 @IonicPage()
 @Component({
@@ -41,6 +41,10 @@ export class LecturesSPage {
    		this.navCtrl.push(ResultsPage);
 	}
 
+
+  navigateToHomePage(): void {
+    this.navCtrl.push(HomePage);
+  }
 
   navigateToTopicsForThisLectureStudent(lectureName): void {
        var currLecture = lectureName;

@@ -4,6 +4,10 @@
   <ion-navbar>
   	<!-- for some reason innerHTML isn't letting me send the lecture ? -->
     <ion-title>Professor: Topics for ...(bug) <span id="currClass"></span></ion-title>
+
+  <ion-buttons end>
+    <button ion-button item-end clear icon-only (click)="navigateToHomePage()"><ion-icon name="home"></ion-icon></button>
+  </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -37,7 +41,7 @@
         <button ion-button item-end clear icon-only (click)="removeTopics(topics.name)" class="butt" style="padding:10px">
           <ion-icon name="trash" color="danger"></ion-icon>
         </button>
-
+        
       </ion-item>
     </ion-list>
   </div>

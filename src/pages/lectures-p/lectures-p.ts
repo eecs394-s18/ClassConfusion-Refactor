@@ -6,6 +6,7 @@ import { AlertController } from 'ionic-angular';
 import { FirebaseApp } from 'angularfire2';
 import {ManagePPage} from '../manage-p/manage-p';
 import {TopicsPPage} from "../topics-p/topics-p"
+import {HomePage} from "../home/home"
 
 @IonicPage()
 @Component({
@@ -36,6 +37,9 @@ export class LecturesPPage {
     document.getElementById('currClass').innerHTML = this.className;
   }
 
+  navigateToHomePage(): void {
+    this.navCtrl.push(HomePage);
+  }
 
   navigateToTopicsForThisLecture(lectureName): void {
        var currLecture = lectureName;

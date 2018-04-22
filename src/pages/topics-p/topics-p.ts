@@ -4,7 +4,7 @@ import { ResultsPage} from "../results/results";
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { AlertController } from 'ionic-angular';
 import { FirebaseApp } from 'angularfire2';
-
+import {HomePage} from '../home/home'
 
 @IonicPage()
 @Component({
@@ -36,6 +36,10 @@ export class TopicsPPage {
   		// not working for some weird reason
   	    // document.getElementById('currLecture').innerHTML = this.navParams.get('currLec');
   	    document.getElementById('currClass').innerHTML = this.className;
+  }
+
+  navigateToHomePage(): void {
+    this.navCtrl.push(HomePage);
   }
 
   // this may take topicName or something but I'm picturing the next page with graphs per lecture
