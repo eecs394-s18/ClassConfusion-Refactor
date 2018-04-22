@@ -71,8 +71,8 @@ export class ResultsPage {
             console.log(worstTopic)
             console.log(worstTopicIndex)
 
-
-            document.getElementById('WorstTopic').innerHTML = worstTopic;
+            //not working
+            // document.getElementById('WorstTopic').innerHTML = worstTopic;
 
         });
 
