@@ -47,7 +47,8 @@ export class TopicsPPage {
          currLec: currLecture,
          currClass: currClass
        });
-    }
+  }
+
   getTopics() {
     this.topicsReady = false;
     this.topicList = []; // this doesn't work - wipe to prevent duplicates from appearing
@@ -148,7 +149,9 @@ export class TopicsPPage {
                     var votes = snapshot.val().voteCount;
                     this.removeTopics(oldName);
                     // Update map, if was checked remove vote in the next line
-                    
+                    var oldStatus = this.topicsCheckedMap.get(oldName);
+                    this.topicsCheckedMap.delete(oldName);
+                    this.topicsCheckedMap.set(data.newName, oldStatus); // Add new name to map with its old status
                     this.addSpecificTopic(data.newName, votes);
                     this.getTopics();
                   });
