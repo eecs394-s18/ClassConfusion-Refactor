@@ -3,13 +3,18 @@
 
   <ion-navbar>
     <ion-title>Results</ion-title>
-  </ion-navbar>
+
   <ion-buttons end>
-      <button ion-button icon-only (click)="ionViewDidLoad()">
+      <button ion-button clear icon-only (click)="ionViewDidLoad()">
         <ion-icon name="refresh"></ion-icon>
       </button>
+
+    <button ion-button item-end clear icon-only (click)="navigateToHomePage()"><ion-icon name="home"></ion-icon></button>
+
     </ion-buttons>
 
+
+</ion-navbar>
 </ion-header>
 
 

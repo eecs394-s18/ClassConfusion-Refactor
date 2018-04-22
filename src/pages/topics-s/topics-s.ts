@@ -4,6 +4,7 @@ import { ResultsPage} from "../results/results";
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { AlertController } from 'ionic-angular';
 import { FirebaseApp } from 'angularfire2';
+import {HomePage} from '../home/home'
 
 @IonicPage()
 @Component({
@@ -46,6 +47,10 @@ export class TopicsSPage {
          currClass: currClass
        });
     }
+
+  navigateToHomePage(): void {
+    this.navCtrl.push(HomePage);
+  }
 
   getTopics() {
     this.topicsReady = false;
