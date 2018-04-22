@@ -49,7 +49,9 @@ ionViewDidLoad() {
  }
 
 
-
+  navigateToHomePage(): void {
+    this.navCtrl.push(HomePage);
+  }
 
   navigateToClassesSPage(): void {
    		this.navCtrl.push(ClassesSPage);

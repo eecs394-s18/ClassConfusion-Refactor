@@ -3,25 +3,16 @@
 
   <ion-navbar>
     <ion-title>Professor: Lectures for <span id="currClass"></span></ion-title>
+
+  <ion-buttons end>
+    <button ion-button item-end clear icon-only (click)="navigateToHomePage()"><ion-icon name="home"></ion-icon></button>
+  </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
-<!--
-	<button ion-button (click)="navigateToResultsPage()">Results Page</button>
- -->
-	<!-- <p>On this page professors can: </p>
-	<ul>
-		<li>Add new lectures with some sort of ID</li>
-		<li>Remove or edit name of current lectures</li>
-		<li>Add list of associated topics to each lecture</li>
-		<li>Edit or remove topics</li>
-		<li>Reset vote counts for any topics</li>
-		<li>No checkbox voting feature here</li>
-	</ul>
- -->
+
 <h1> Current viewing lectures for class: <b><span id="currClass"></span></b></h1>
 <br>
 <h2>Create a new lecture or select an existing lecture to go to its list of topics: </h2>

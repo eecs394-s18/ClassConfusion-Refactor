@@ -2,6 +2,10 @@
 
   <ion-navbar>
     <ion-title>Professor: Manage Classes </ion-title>
+
+      <ion-buttons end>
+    <button ion-button item-end clear icon-only (click)="navigateToHomePage()"><ion-icon name="home"></ion-icon></button>
+  </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -9,17 +13,7 @@
 
 <ion-content padding>
 
-	<!-- <button ion-button (click)="navigateToLecturesPPage()">PROFESSOR LECTURE PAGE</button> -->
-	<!-- <p>
-		On this page professors can:
-</p> -->
-<!-- <ul>
-	<li>Create a new class</li>
-	<li>View classes they are already teaching or "enrolled" in</li>
-	<li>Edit and delete current classes</li>
-	<li>Select a class to move into its lecture page</li>
-</ul>
- -->
+
   <h1> Create a new class or select a class with the arrow button to view its lectures: </h1>
 
   <ion-row>

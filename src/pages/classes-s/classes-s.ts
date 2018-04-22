@@ -4,7 +4,7 @@ import { LecturesSPage} from "../lectures-s/lectures-s";
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { AlertController } from 'ionic-angular';
 import { FirebaseApp } from 'angularfire2';
-
+import {HomePage} from '../home/home'
 
 // IMPORTANT
 // right now, this is implemented as though a student has "added these classes to their schedule",
@@ -25,6 +25,10 @@ export class ClassesSPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ClassesSPage');
+  }
+
+  navigateToHomePage(): void {
+    this.navCtrl.push(HomePage);
   }
 
   navigateToLecturesSPage(): void {

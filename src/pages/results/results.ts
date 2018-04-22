@@ -4,7 +4,7 @@ import { Chart } from 'chart.js';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { FirebaseApp } from 'angularfire2';
 import { FirebaseListObservable } from 'angularfire2/database-deprecated';
-
+import {HomePage} from '../home/home'
 @IonicPage()
 @Component({
   selector: 'page-results',
@@ -19,7 +19,7 @@ export class ResultsPage {
 
     private db = null;
 
-    constructor(public firebaseProvider: FirebaseProvider, private fbApp: FirebaseApp, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public firebaseProvider: FirebaseProvider, private fbApp: FirebaseApp, public navParams: NavParams) {
 
 
 
@@ -125,6 +125,9 @@ export class ResultsPage {
 
 
     }
+    navigateToHomePage(): void {
+    this.navCtrl.push(HomePage);
+  }
 
 
 }

@@ -4,6 +4,7 @@ import { LecturesPPage } from "../lectures-p/lectures-p";
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { AlertController } from 'ionic-angular';
 import { FirebaseApp } from 'angularfire2';
+import {HomePage} from '../home/home'
 
 @IonicPage()
 @Component({
@@ -24,6 +25,9 @@ export class ManagePPage {
     console.log('ionViewDidLoad ManagePPage');
   }
 
+  navigateToHomePage(): void {
+    this.navCtrl.push(HomePage);
+  }
   // navigate to lecture page for that class by pushing next page and class name
   navigateToLecturesForThisClass(className): void {
        var currClass = className;
