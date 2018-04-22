@@ -11,6 +11,13 @@ import { FirebaseApp } from 'angularfire2';
   templateUrl: 'topics-s.html',
 })
 export class TopicsSPage {
+  topicList: Array<any> = [];
+  newTopic = '';
+  lectureName = '';
+  className = '';
+  topicsRef: any; // Reference that is frequenly used
+  topicsReady: boolean = false; // Check if topics are retrieved before loading list of checkboxes
+  topicsCheckedMap: Map<string, boolean>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider, public alertCtrl: AlertController, private fbApp: FirebaseApp) {
   	this.lectureName = navParams.get('currLec');
@@ -21,20 +28,12 @@ export class TopicsSPage {
     this.getTopics(); // load up the lecture list
     this.topicsCheckedMap = new Map([]);
   }
-
-  topicList: Array<any> = [];
-  newTopic = '';
-  lectureName = '';
-  className = '';
-  topicsRef: any; // Reference that is frequenly used
-  topicsReady: boolean = false; // Check if topics are retrieved before loading list of checkboxes
-  topicsCheckedMap: Map<string, boolean>;
-
-// buggy
-    ionViewDidLoad() {
+  
+  // buggy
+  ionViewDidLoad() {
   		// not working for some weird reason
-  	    // document.getElementById('currLecture').innerHTML = this.navParams.get('currLec');
-  	    // document.getElementById('currClass').innerHTML = this.className;
+  	  // document.getElementById('currLecture').innerHTML = this.navParams.get('currLec');
+  	  // document.getElementById('currClass').innerHTML = this.className;
   }
 
   // this may take topicName or something but I'm picturing the next page with graphs per lecture
@@ -55,25 +54,21 @@ export class TopicsSPage {
         this.topicList.push(child.val());
       });
     });
-    console.log(this.topicList)
     console.log("[Alert] Retrieved topics from Firebase.");
     this.topicsReady = true; // Now ready to display...
   }
 
-  setStatus(topicName) {
-    var currentStatus = this.topicsCheckedMap.get(name);
-    if (currentStatus) // If not first time, just flip the status
+  updateVote(topicName) {
+    var currentStatus = this.topicsCheckedMap.get(topicName);
+    if (currentStatus != undefined) // If not first time, just flip the status
     {
-      this.topicsCheckedMap.set(name, !currentStatus);
+      this.topicsCheckedMap.set(topicName, !currentStatus);
     }
     else // First time
     {
-      this.topicsCheckedMap.set(name, true);
+      this.topicsCheckedMap.set(topicName, true);
     }
-  }
-
-  updateVote(topicName) {
-    this.setStatus(topicName);
+      
     var voteChange = 0;
     if (this.topicsCheckedMap.get(topicName)) { voteChange = 1; }
     else { voteChange = -1; }
@@ -83,7 +78,6 @@ export class TopicsSPage {
       currentTopic.voteCount += voteChange;
       return currentTopic;
     });
-
     this.getTopics();
   }
 
@@ -95,7 +89,4 @@ export class TopicsSPage {
     });
     alert.present();
   }
-
-
-
 }
