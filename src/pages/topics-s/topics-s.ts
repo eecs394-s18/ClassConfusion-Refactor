@@ -29,7 +29,7 @@ export class TopicsSPage {
     this.getTopics(); // load up the lecture list
     this.topicsCheckedMap = new Map([]);
   }
-  
+
   // buggy
   ionViewDidLoad() {
   		// not working for some weird reason
@@ -73,7 +73,7 @@ export class TopicsSPage {
     {
       this.topicsCheckedMap.set(topicName, true);
     }
-      
+
     var voteChange = 0;
     if (this.topicsCheckedMap.get(topicName)) { voteChange = 1; }
     else { voteChange = -1; }
