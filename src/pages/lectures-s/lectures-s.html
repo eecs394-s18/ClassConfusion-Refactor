@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Student: View Lectures</ion-title>
+    <ion-title>Student: Lectures</ion-title>
 
    <ion-buttons end>
      <button ion-button icon-only (click)="getLectures()"><ion-icon name="refresh"></ion-icon> </button>
@@ -24,8 +24,9 @@
 		<li>No permissions for edit/deleting lectures or topics</li>
 		<li>Potentially a comment box per topic that you could open up?</li>
 	</ul> -->
-
+<br>
 <h1>Select a lecture from the list to vote on its topics: </h1>
+<br>
 	<div *ngIf="lecturesReady">
     <ion-list *ngFor="let lecture of lectureList">
       <ion-item>
