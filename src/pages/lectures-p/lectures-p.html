@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Professor: Lectures for <span id="currClass"></span></ion-title>
+    <ion-title>Professor: Lectures for {{this.className}}</ion-title>
 
   <ion-buttons end>
     <button ion-button icon-only (click)="getLectures()"><ion-icon name="refresh"></ion-icon> </button>
@@ -14,7 +14,7 @@
 
 <ion-content padding>
 
-<h1> Current viewing lectures for class: <b><span id="currClass"></span></b></h1>
+<h1> Current viewing lectures for class: <b>{{this.className}}</b></h1>
 <br>
 <h2>Create a new lecture or select an existing lecture to go to its list of topics: </h2>
 

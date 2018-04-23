@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ClassesSPage} from "../classes-s/classes-s";
 import { ManagePPage} from "../manage-p/manage-p";
-import {LoginPage} from "../login/login"
+import {LoginPage} from "../login/login";
 import { AngularFireAuth } from 'angularfire2/auth';
+import { RegisterPage } from "../register/register";
 
 @Component({
   selector: 'page-home',
@@ -19,6 +20,7 @@ export class HomePage {
 // on load show what type of email is logged in (is it showing last recently logged in?
 // may need to change)
 ionViewDidLoad() {
+  this.navigateToLoginPage();
 
    this.afAuth.authState.subscribe(res => {
       var printer = "";
@@ -64,5 +66,8 @@ ionViewDidLoad() {
 
   navigateToLoginPage(): void {
     this.navCtrl.push(LoginPage);
+  }
+  navigateToRegistrationPage(): void {
+    this.navCtrl.push(RegisterPage);
   }
 }

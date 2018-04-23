@@ -4,6 +4,7 @@ import { User } from "../../shared/models/user";
 import { AngularFireAuth } from 'angularfire2/auth';
 import {HomePage} from '../home/home';
 import { AlertController } from 'ionic-angular';
+import { RegisterPage } from "../register/register";
 
 @IonicPage()
 @Component({
@@ -26,6 +27,9 @@ export class LoginPage {
     alert.present();
   }
 
+  navigateToRegistrationPage(): void {
+    this.navCtrl.push(RegisterPage);
+  }
 
   async login(user: User) {
     try {
@@ -41,23 +45,6 @@ export class LoginPage {
     }
 
 
-  }
-
-  async register(user: User) {
-    try {
-      const result = await this.afAuth.auth.createUserWithEmailAndPassword(
-        user.email,
-        user.password
-      );
-      if (result) {
-        // this.navCtrl.setRoot('HomePage');
-        console.log(user.email);
-        this.navCtrl.push(HomePage);
-      }
-    } catch (e) {
-      this.presentAlert(e)
-      console.error(e);
-    }
   }
 
   // printUser(): void{

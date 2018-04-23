@@ -81,7 +81,7 @@ export class TopicsPPage {
   }
 
   addSpecificTopic(name, votes) {
-    if (name.length === 0) { return; } 
+    if (name.length === 0) { return; }
     if (votes <= 1) { votes = 0 }
     this.topicsRef.child(name).once('value', (snapshot) => {
       if (snapshot.exists()) {
@@ -127,7 +127,7 @@ export class TopicsPPage {
                 {
                   this.presentDuplicateAlert();
                 }
-                else 
+                else
                 {
                   // Update the name here
                   this.getTopics(); // Reload the topicList
