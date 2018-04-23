@@ -5,6 +5,7 @@ import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { AlertController } from 'ionic-angular';
 import { FirebaseApp } from 'angularfire2';
 import {HomePage} from '../home/home'
+import {ManagePPage} from '../manage-p/manage-p';
 
 @IonicPage()
 @Component({
@@ -40,6 +41,10 @@ export class TopicsPPage {
 
   navigateToHomePage(): void {
     this.navCtrl.push(HomePage);
+  }
+
+  navigateToManagePPage(): void {
+    this.navCtrl.push(ManagePPage);
   }
 
   // this may take topicName or something but I'm picturing the next page with graphs per lecture
@@ -81,7 +86,7 @@ export class TopicsPPage {
   }
 
   addSpecificTopic(name, votes) {
-    if (name.length === 0) { return; } 
+    if (name.length === 0) { return; }
     if (votes <= 1) { votes = 0 }
     this.topicsRef.child(name).once('value', (snapshot) => {
       if (snapshot.exists()) {
@@ -127,7 +132,7 @@ export class TopicsPPage {
                 {
                   this.presentDuplicateAlert();
                 }
-                else 
+                else
                 {
                   // Update the name here
                   this.getTopics(); // Reload the topicList
