@@ -41,6 +41,9 @@ export class LecturesSPage {
    		this.navCtrl.push(ResultsPage);
 	}
 
+  navigateToClassesSPage(): void {
+    this.navCtrl.push(ClassesSPage);
+  }
 
   navigateToHomePage(): void {
     this.navCtrl.push(HomePage);

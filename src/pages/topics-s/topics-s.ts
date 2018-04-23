@@ -4,7 +4,8 @@ import { ResultsPage} from "../results/results";
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { AlertController } from 'ionic-angular';
 import { FirebaseApp } from 'angularfire2';
-import {HomePage} from '../home/home'
+import {HomePage} from '../home/home';
+import {ClassesSPage} from '../classes-s/classes-s'
 
 @IonicPage()
 @Component({
@@ -47,8 +48,8 @@ export class TopicsSPage {
        });
     }
 
-  navigateToHomePage(): void {
-    this.navCtrl.push(HomePage);
+  navigateToClassesSPage(): void {
+    this.navCtrl.push(ClassesSPage);
   }
 
   getTopics() {
