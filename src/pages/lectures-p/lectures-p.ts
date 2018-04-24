@@ -32,11 +32,6 @@ export class LecturesPPage {
   lecturesReady: boolean = false; // Check if topics are retrieved before loading list of checkboxes
   lecturesCheckedMap: Map<string, boolean>;
 
-
-  ionViewDidLoad() {
-    // document.getElementById('currClass').innerHTML = this.className;
-  }
-
   navigateToManagePPage(): void {
     this.navCtrl.push(ManagePPage);
   }
