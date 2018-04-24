@@ -28,11 +28,12 @@
 
 	<h1> Select an already-added class to view its lectures:</h1>
 	<div *ngIf="ready">
-    <ion-list *ngFor="let class of classList">
-      <ion-item>
-        <ion-label>{{class.name}}</ion-label>
+    <ion-list >
+      <ion-item *ngFor="let c of classList">
+        <ion-label>{{c.name}}</ion-label>
+        <ion-radio (click)="navigateToLecturesForThisClassStudent(c.name)"> </ion-radio>
 
-        <button ion-button item-end clear icon-only (click)="navigateToLecturesForThisClassStudent(class.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>
+        <!-- <button ion-button item-end clear icon-only (click)="navigateToLecturesForThisClassStudent(class.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button> -->
 
 
       </ion-item>
