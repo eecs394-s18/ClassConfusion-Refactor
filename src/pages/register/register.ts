@@ -6,6 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AlertController } from 'ionic-angular';
 import { User } from "../../shared/models/user";
 import {LoginPage} from "../login/login";
+import { HomePage } from "../home/home";
 
 /**
  * Generated class for the RegisterPage page.
@@ -82,7 +83,7 @@ export class RegisterPage {
       console.error(e);
     }
   }
-  // 
+  //
   // async getChecked(): void {
   //   try {
   //     var result = await this.checked;
