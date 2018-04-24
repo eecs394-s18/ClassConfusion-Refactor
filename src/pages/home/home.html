@@ -12,14 +12,21 @@
 </ion-header>
 
 <ion-content padding>
-  <p> Click the buttons below to either test login functionality or test out the student or professor route (this will be automatically after login in reality)
-  </p>
+<ion-list radio-group [(ngModel)]="relationship">
+  <ion-item>
+  <ion-label>Login Page</ion-label>
+  <ion-radio (click)="navigateToLoginPage()"></ion-radio>
+  </ion-item>
+  <ion-item>
+  <ion-label>Student</ion-label>
+  <ion-radio (click)="navigateToClassesSPage()"></ion-radio>
+  </ion-item>
+  <ion-item>
+  <ion-label>Professor</ion-label>
+  <ion-radio (click)="navigateToManagePPage()"></ion-radio>
+  </ion-item>
+</ion-list>
 
-  <button class="home-button" ion-button color=light (click) = "navigateToLoginPage()">LOGIN PAGE</button>
-  <br>
-  <button class="home-button" ion-button (click)="navigateToClassesSPage()">STUDENT ROUTE</button>
-  <br>
-  <button class="home-button" ion-button (click)="navigateToManagePPage()">PROFESSOR ROUTE</button>
 
   <p> Type of email that's logged in: <b><span id="printer"></span></b></p>
 

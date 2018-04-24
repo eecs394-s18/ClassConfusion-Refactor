@@ -28,12 +28,11 @@
 <h1>Select a lecture from the list to vote on its topics: </h1>
 <br>
 	<div *ngIf="lecturesReady">
-    <ion-list *ngFor="let lecture of lectureList">
-      <ion-item>
+    <ion-list>
+      <ion-item *ngFor="let lecture of lectureList">
         <ion-label>{{lecture.name}}</ion-label>
-
-        <button ion-button item-end clear icon-only (click)="navigateToTopicsForThisLectureStudent(lecture.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>
-
+        <ion-radio (click)="navigateToTopicsForThisLectureStudent(lecture.name)"> </ion-radio>
+        <!-- <ion-radio icon-only (click)="navigateToTopicsForThisLectureStudent(lecture.name)" value="{{class.name}}"></ion-radio> -->
       </ion-item>
     </ion-list>
   </div>

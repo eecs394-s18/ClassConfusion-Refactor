@@ -23,6 +23,13 @@ export class ClassesSPage {
     this.checkedMap = new Map([]);
   }
 
+  // EVERYTHING FOR ADDING CLASSES INITIALLY
+  classList: Array<any> = [];
+  newClass = '';
+  classesRef: any; // Reference that is frequenly used
+  ready: boolean = false; // Check if topics are retrieved before loading list of checkboxes
+  checkedMap: Map<string, boolean>;
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad ClassesSPage');
   }
@@ -36,21 +43,22 @@ export class ClassesSPage {
 	}
 
   // navigate to lecture page for that class by pushing next page and class name
-  navigateToLecturesForThisClassStudent(className): void {
-       var currClass = className;
-       this.navCtrl.push(LecturesSPage, {
-         param1: currClass
-       });
-       console.log(className);
+  async navigateToLecturesForThisClassStudent(className): void { //TODO: Make this async
+  console.log("ok, entering function");
+  try {
+    var currClass = await className;
+
+    if (this.ready) {
+      this.navCtrl.push(LecturesSPage, {
+        param1: currClass
+      });
     }
 
 
-  // EVERYTHING FOR ADDING CLASSES INITIALLY
-  classList: Array<any> = [];
-  newClass = '';
-  classesRef: any; // Reference that is frequenly used
-  ready: boolean = false; // Check if topics are retrieved before loading list of checkboxes
-  checkedMap: Map<string, boolean>;
+  } catch(e) {
+    console.error(e);
+  }
+  }
 
   // I think this is something to do with pushing on the full list every time
   // Something with how get classes is called at the end of addclasses and remove classes

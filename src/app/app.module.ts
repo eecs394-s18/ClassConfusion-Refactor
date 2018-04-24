@@ -14,8 +14,9 @@ import {LecturesSPage} from '../pages/lectures-s/lectures-s'
 import {LecturesPPage} from '../pages/lectures-p/lectures-p'
 import { ResultsPage} from "../pages/results/results";
 import {LoginPage} from "../pages/login/login";
-import {TopicsPPage} from "../pages/topics-p/topics-p"
-import {TopicsSPage} from "../pages/topics-s/topics-s"
+import {TopicsPPage} from "../pages/topics-p/topics-p";
+import {TopicsSPage} from "../pages/topics-s/topics-s";
+import {RegisterPage} from "../pages/register/register";
 
 
 import { HttpModule } from '@angular/http';
@@ -44,7 +45,8 @@ var firebaseConfig = {
     ResultsPage,
     LoginPage,
     TopicsPPage,
-    TopicsSPage
+    TopicsSPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,7 @@ var firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
+    RegisterPage,
     ClassesSPage,
     ManagePPage,
     LecturesSPage,

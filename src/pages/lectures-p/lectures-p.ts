@@ -34,7 +34,7 @@ export class LecturesPPage {
 
 
   ionViewDidLoad() {
-    document.getElementById('currClass').innerHTML = this.className;
+    // document.getElementById('currClass').innerHTML = this.className;
   }
 
   navigateToManagePPage(): void {
