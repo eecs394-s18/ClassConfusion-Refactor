@@ -5,6 +5,7 @@ import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { AlertController } from 'ionic-angular';
 import { FirebaseApp } from 'angularfire2';
 import {HomePage} from '../home/home'
+import {ManagePPage} from '../manage-p/manage-p';
 
 @IonicPage()
 @Component({
@@ -40,6 +41,10 @@ export class TopicsPPage {
 
   navigateToHomePage(): void {
     this.navCtrl.push(HomePage);
+  }
+
+  navigateToManagePPage(): void {
+    this.navCtrl.push(ManagePPage);
   }
 
   // this may take topicName or something but I'm picturing the next page with graphs per lecture

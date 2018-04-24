@@ -3,10 +3,10 @@
 
   <ion-navbar>
   	<!-- for some reason innerHTML isn't letting me send the lecture ? -->
-    <ion-title>Professor: Topics for ...(bug) <span id="currClass"></span></ion-title>
+    <ion-title>Professor: Topics <span id="currClass"></span></ion-title>
   <ion-buttons end>
     <button ion-button icon-only (click)="getTopics()"><ion-icon name="refresh"></ion-icon> </button>
-    <button ion-button item-end clear icon-only (click)="navigateToHomePage()"><ion-icon name="home"></ion-icon></button>
+    <button ion-button item-end clear icon-only (click)="navigateToManagePPage()"><ion-icon name="home"></ion-icon></button>
 
   </ion-buttons>
   </ion-navbar>
@@ -46,8 +46,8 @@
       </ion-item>
     </ion-list>
   </div>
-
-<div>
+<br>
+<div class = "center">
   <button ion-button (click)="navigateToResultsForThisLectureProfessor()" class="butt">See Results</button>
 </div>
 </ion-content>

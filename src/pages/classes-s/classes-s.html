@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Student: View Classes</ion-title>
+    <ion-title><b>STUDENT HOME</b></ion-title>
 
   <ion-buttons end>
     <button ion-button icon-only (click)="getClasses()"><ion-icon name="refresh"></ion-icon> </button>
@@ -25,8 +25,10 @@
 
 	<!-- FILLER - DO THIS!!! -->
 	<!-- <h2> Search for a course and add it to your schedule here: TODO</h2> -->
-
-	<h1> Currently enrolled classes:</h1>
+<br>
+  <h1>Select a class from your schedule to view its lectures:</h1>
+  <br>
+	<h2> My Classes: </h2>
 	<div *ngIf="ready">
     <ion-list >
       <ion-item *ngFor="let c of classList">

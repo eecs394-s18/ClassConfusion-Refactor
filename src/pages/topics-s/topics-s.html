@@ -1,19 +1,31 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Student: View and Vote</ion-title>
+    <ion-title>Student: Topics</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="getTopics()"><ion-icon name="refresh"></ion-icon> </button>
-    <button ion-button item-end clear icon-only (click)="navigateToHomePage()"><ion-icon name="home"></ion-icon></button>
+    <button ion-button item-end clear icon-only (click)="navigateToClassesSPage()"><ion-icon name="home"></ion-icon></button>
   </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
+<ion-menu [content]="mycontent">
+  <ion-content>
+    <ion-list>
+      <p>some menu content, could be list items</p>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
 <ion-content padding>
 
-	<h1> View topics from that lecture. Check the box on the left if you are confused about a topic!</h1>
+
+<br>
+	<h1> View topics from that lecture. Check the box on the left if you are confused about a topic!</h1><br>
 	<div *ngIf="topicsReady">
     <ion-list *ngFor="let topic of topicList">
       <ion-item>
@@ -25,8 +37,8 @@
       </ion-item>
     </ion-list>
   </div>
-
-  <div>
+<br>
+  <div class = "center">
      <button ion-button (click)="navigateToResultsForThisLectureStudent()" class="butt">See Results</button>
  </div>
 

@@ -37,9 +37,14 @@ export class LecturesPPage {
     // document.getElementById('currClass').innerHTML = this.className;
   }
 
+  navigateToManagePPage(): void {
+    this.navCtrl.push(ManagePPage);
+  }
+
   navigateToHomePage(): void {
     this.navCtrl.push(HomePage);
   }
+
 
   navigateToTopicsForThisLecture(lectureName): void {
        var currLecture = lectureName;
