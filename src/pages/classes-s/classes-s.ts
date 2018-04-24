@@ -43,7 +43,7 @@ export class ClassesSPage {
 	}
 
   // navigate to lecture page for that class by pushing next page and class name
-  async navigateToLecturesForThisClassStudent(className): void { //TODO: Make this async
+  async navigateToLecturesForThisClassStudent(className){ //TODO: Make this async
   console.log("ok, entering function");
   try {
     var currClass = await className;
