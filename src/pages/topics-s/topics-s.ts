@@ -97,7 +97,6 @@ export class TopicsSPage {
   }
 
   addComment(name) {
-    console.log("Add a new comment for: " + name);
     let alert = this.alertCtrl.create({
       title: "Add a new comment for topic '" + name + "':",
       inputs: [
@@ -115,10 +114,9 @@ export class TopicsSPage {
         {
           text: "confirm",
           handler: data => {
-            if (data.comment) // Something was entered
+            if (data.comment) // Something was entered; let's add it
             {
-              console.log("New comment:");
-              console.log(data.comment);
+              this.topicsRef.child(name).child("comments").push(data.comment); // write the comment
             }
             else // Nothing entered; do nothing
             {
