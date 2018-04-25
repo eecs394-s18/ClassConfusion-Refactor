@@ -66,7 +66,7 @@ export class ManagePPage {
 
       });
     console.log(this.classList);
-    console.log("[Alert] Retrieved classes from Firebase.");
+
     this.ready = true; // Now ready to display...
    }
 

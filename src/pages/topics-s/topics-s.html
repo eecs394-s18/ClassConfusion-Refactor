@@ -22,10 +22,9 @@
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
 
 <ion-content padding>
-
-
-
-  <h1> Topics for: <b> {{className}}</b>, Lecture: <b>{{lectureName}} </b></h1>
+<br>
+<div class="center">
+  <h1> Topics for: <b> {{className}}</b>, Lecture: <b>{{lectureName}} </b></h1></div>
 
 	<p>Here are topics from that lecture. Check the box on the left if you are confused about a topic!</p>
 	<div *ngIf="topicsReady">
