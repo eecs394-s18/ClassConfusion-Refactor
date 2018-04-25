@@ -23,6 +23,7 @@ import { HomePage } from "../home/home";
 export class RegisterPage {
 
   user = {} as User;
+  checked = '';
 
   constructor(private afAuth: AngularFireAuth,
     public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
@@ -93,7 +94,7 @@ export class RegisterPage {
   //   }
   // }
 
-  async tempRegister(): void {
+  async tempRegister() {
     try {
       if (this.checked == 'professor') {
         this.navigateToManagePPage();
