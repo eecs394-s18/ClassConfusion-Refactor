@@ -35,27 +35,28 @@ export class LoginPage {
 
 
   navigateToCorrectHomePage(email): void {
-       var inputEmail = email;
-       var profOrStudent = ""
-       if(inputEmail.includes("u.northwestern")){
-         profOrStudent = "Student";
-         this.navCtrl.push(ClassesSPage, {
-         currEmail: email,
-         profOrStudent:  profOrStudent
-       });
-       }
-       else{
-         profOrStudent = "Professor";
-         this.navCtrl.push(ManagePPage, {
-         currEmail: email,
-         profOrStudent:  profOrStudent
-       });
-       }
+     var inputEmail = email;
+     var profOrStudent = "";
 
-       console.log("EMAIL: ", email)
-       console.log("proforstud", profOrStudent)
-       // this.navCtrl.push(TopicsPPage, {
+     if (inputEmail.substr(inputEmail.length - 17) == "@northwestern.edu") // Professor
+     {
+       profOrStudent = "Professor";
+       this.navCtrl.push(ManagePPage, {
+         currEmail: email,
+         profOrStudent: profOrStudent
+       });
+     }
+     else
+     {
+       profOrStudent = "Student";
+       this.navCtrl.push(ClassesSPage, {
+        currEmail: email,
+        profOrStudent:  profOrStudent
+       });
+     }
 
+     console.log("EMAIL: ", email)
+     console.log("proforstud", profOrStudent)
    }
 
   // async login(user: User) {
