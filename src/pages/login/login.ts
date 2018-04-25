@@ -5,6 +5,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import {HomePage} from '../home/home';
 import { AlertController } from 'ionic-angular';
 import { RegisterPage } from "../register/register";
+import {ManagePPage} from "../manage-p/manage-p";
+import {ClassesSPage } from "../classes-s/classes-s"
 
 @IonicPage()
 @Component({
@@ -31,21 +33,46 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
   }
 
-  async login(user: User) {
-    try {
-      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
-      if (result) {
-        // this.navCtrl.setRoot('HomePage');
-        this.navCtrl.push(HomePage);
-      }
-    }
-    catch (e) {
-      this.presentAlert(e);
-      console.error(e);
-    }
+
+  navigateToCorrectHomePage(email): void {
+       var inputEmail = email;
+       var profOrStudent = ""
+       if(inputEmail.includes("u.northwestern")){
+         profOrStudent = "Student";
+         this.navCtrl.push(ClassesSPage, {
+         currEmail: email,
+         profOrStudent:  profOrStudent
+       });
+       }
+       else{
+         profOrStudent = "Professor";
+         this.navCtrl.push(ManagePPage, {
+         currEmail: email,
+         profOrStudent:  profOrStudent
+       });
+       }
+
+       console.log("EMAIL: ", email)
+       console.log("proforstud", profOrStudent)
+       // this.navCtrl.push(TopicsPPage, {
+
+   }
+
+  // async login(user: User) {
+  //   try {
+  //     const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+  //     if (result) {
+  //       // this.navCtrl.setRoot('HomePage');
+  //       this.navCtrl.push(HomePage);
+  //     }
+  //   }
+  //   catch (e) {
+  //     this.presentAlert(e);
+  //     console.error(e);
+  //   }
 
 
-  }
+  // }
 
   // printUser(): void{
   //    let user = this.afAuth.auth.currentUser;

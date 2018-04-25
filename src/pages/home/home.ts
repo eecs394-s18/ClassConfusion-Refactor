@@ -22,31 +22,31 @@ export class HomePage {
 ionViewDidLoad() {
   this.navigateToLoginPage();
 
-   this.afAuth.authState.subscribe(res => {
-      var printer = "";
-      if (res && res.uid) {
-        console.log(res.email);
-        console.log('user is logged in');
+   // this.afAuth.authState.subscribe(res => {
+   //    var printer = "";
+   //    if (res && res.uid) {
+   //      console.log(res.email);
+   //      console.log('user is logged in');
 
-        var string = res.email, prof_substring = "@northwestern.edu", student_substring = "@u.northwestern.edu";
-        if(string.includes(prof_substring)){
-          console.log("Professor email.");
-          printer = "PROF EMAIL"
+   //      var string = res.email, prof_substring = "@northwestern.edu", student_substring = "@u.northwestern.edu";
+   //      if(string.includes(prof_substring)){
+   //        console.log("Professor email.");
+   //        printer = "PROF EMAIL"
 
-        }
-        else if(string.includes(student_substring)){
-          console.log("Student email.")
-          printer = "STUDENT EMAIL"
-        }
+   //      }
+   //      else if(string.includes(student_substring)){
+   //        console.log("Student email.")
+   //        printer = "STUDENT EMAIL"
+   //      }
 
 
-      }
-       else {
-        console.log('user not logged in');
-      }
+   //    }
+   //     else {
+   //      console.log('user not logged in');
+   //    }
 
-      document.getElementById('printer').innerHTML = printer;
-    });
+   //    document.getElementById('printer').innerHTML = printer;
+   //  });
 
  }
 
