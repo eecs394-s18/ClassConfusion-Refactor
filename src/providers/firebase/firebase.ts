@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
+import { FirebaseApp } from 'angularfire2';
 
 @Injectable()
 export class FirebaseProvider {
 
-  constructor(public afd: AngularFireDatabase) {
+  constructor(public afd: AngularFireDatabase, private fbApp: FirebaseApp) {
   }
 
   //for adding classes
@@ -67,4 +68,15 @@ export class FirebaseProvider {
     return this.afd.list('/classes/' + className + '/lectures/' + lectureName +'/topics/' + topicName + '/voteCount');
   }
 
+  getComments(className, lectureName, topicName) {
+    var commentRef = this.fbApp.database().ref('/classes/' + className + '/lectures/' + lectureName + '/topics/' + topicName + '/comments');
+    var commentList = [];
+    commentRef.on('value', (snapshot) => {
+      snapshot.forEach((child) => {
+        commentList.push(child.val());
+        return false; // to appease the compiler
+      });
+    });
+    return commentList;
+  }
 }

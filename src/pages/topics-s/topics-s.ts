@@ -4,8 +4,8 @@ import { ResultsPage} from "../results/results";
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { AlertController } from 'ionic-angular';
 import { FirebaseApp } from 'angularfire2';
-import {HomePage} from '../home/home';
-import {ClassesSPage} from '../classes-s/classes-s'
+import { HomePage } from '../home/home';
+import { ClassesSPage } from '../classes-s/classes-s'
 
 @IonicPage()
 @Component({
@@ -92,6 +92,44 @@ export class TopicsSPage {
     let alert = this.alertCtrl.create({
       title: 'This item is already in the list!',
       buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
+  addComment(name) {
+    let alert = this.alertCtrl.create({
+      title: "Add a new comment for topic '" + name + "':",
+      inputs: [
+        {
+          name: "comment",
+          placeholder: "new comment here"
+        }
+      ],
+      buttons: [
+        {
+          text: "Cancel",
+          role: "cancel",
+          handler: data => { }
+        },
+        {
+          text: "confirm",
+          handler: data => {
+            if (data.comment) // Something was entered; let's add it
+            {
+              this.topicsRef.child(name).child("comments").push(data.comment); // write the comment
+            }
+            else // Nothing entered; do nothing
+            {
+              let noChangeAlert = this.alertCtrl.create({
+                title: "No comment entered.",
+                subTitle: "Please try again.",
+                buttons: ["Dismiss"]
+              });
+              noChangeAlert.present();
+            }
+          }
+        }
+      ]
     });
     alert.present();
   }

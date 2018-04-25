@@ -36,6 +36,10 @@
         <ion-checkbox [(ngModel)]="topicsCheckedMap[topic.name]" (ionChange)="updateVote(topic.name);">
         </ion-checkbox>
 
+        <button ion-button item-end clear icon-only (click)="addComment(topic.name)" class="butt" style="padding:10px">
+          <ion-icon name="chatbubbles"></ion-icon>
+        </button>
+
       </ion-item>
     </ion-list>
   </div>
