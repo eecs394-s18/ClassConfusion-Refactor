@@ -15,10 +15,8 @@
 <ion-content padding>
 
 
-  <br><h1> Lectures for: <b>{{this.className}}</b></h1>
-<br>
-<h1>Select a lecture from the list to vote on its topics: </h1>
-<br>
+<h1><b>{{this.className}}</b> Lectures</h1>
+<p>Select a lecture to vote on its topics: </p>
 	<div *ngIf="lecturesReady">
     <ion-list>
       <ion-item *ngFor="let lecture of lectureList">
