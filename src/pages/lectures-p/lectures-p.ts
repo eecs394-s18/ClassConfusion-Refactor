@@ -81,6 +81,68 @@ export class LecturesPPage {
 
   }
 
+  addSpecificLecture(name) {
+    if (name.length === 0) { return; }
+    this.lecturesRef.child(name).once('value', (snapshot) => {
+        this.lecturesRef.child(name); // Create new child...
+        this.lecturesRef.child(name).set(
+        {
+          name: name,
+        });
+        this.getLectures(); // Reload the topicList
+    });
+  }
+
+  editLecture(oldName) {
+    console.log("Edit topic " + name);
+    let alert = this.alertCtrl.create({
+      title: 'Change Topic',
+      inputs: [
+        {
+          name: 'newName',
+          placeholder: oldName
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Confirm',
+          handler: data => {
+            if (data.newName) // Something was entered
+            {
+              this.lecturesRef.child(data.newName).once('value', (snapshot) => {
+                  // Update the name here
+                  this.getLectures(); // Reload the topicList
+                  var child = this.lecturesRef.child(oldName);
+                  child.once('value', (snapshot) => {
+                    this.removeLectures(oldName);
+                    this.addSpecificLecture(data.newName);
+                    this.getLectures();
+                  });
+              });
+            }
+            else // Nothing entered; do nothing
+            {
+              let noChangeAlert = this.alertCtrl.create({
+                title: 'No topic name entered!',
+                subTitle: 'Please try again.',
+                buttons: ['Dismiss']
+              });
+              noChangeAlert.present();
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
   removeLectures(lectureName) {
     this.lecturesReady = false;
     this.firebaseProvider.removeLectures(this.className, lectureName);
