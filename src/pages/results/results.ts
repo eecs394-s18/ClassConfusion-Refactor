@@ -20,11 +20,8 @@ export class ResultsPage {
     private db = null;
 
     constructor(public navCtrl: NavController, public firebaseProvider: FirebaseProvider, private fbApp: FirebaseApp, public navParams: NavParams) {
-
-
-
-        this.db = this.fbApp.database();
-        this.lectureName = navParams.get('currLec');
+      this.db = this.fbApp.database();
+      this.lectureName = navParams.get('currLec');
   		this.className = navParams.get('currClass');
 
     }
@@ -75,6 +72,28 @@ export class ResultsPage {
             // document.getElementById('WorstTopic').innerHTML = worstTopic;
 
         });
+
+        let commentDict = {};
+        let commentRef;
+        for (let i=0; i<nameArray.length;i++) {
+          let commentList = [];
+          commentRef = this.fbApp.database().ref('/classes/' + this.className + '/lectures/' + this.lectureName + '/topics/' + nameArray[i] + '/comments');
+          console.log("printing commentRef")
+          console.log(commentRef);
+          commentRef.on('value', function(snapshot) {
+            console.log(snapshot.val());
+            snapshot.forEach((child) => {
+              commentList.push(child.val());
+              return false;
+            });
+          });
+          commentDict[nameArray[i]] = commentList;
+          console.log(commentList);
+          console.log("printing dict");
+          console.log(commentDict);
+        }
+
+        //currently have a dictionary {topic name: [array of comments]}
 
 
         this.barChart = new Chart(this.barCanvas.nativeElement, {
