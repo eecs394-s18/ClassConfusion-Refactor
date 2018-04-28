@@ -34,8 +34,14 @@
     <ion-list>
       <ion-item *ngFor="let lecture of lectureList">
         <ion-label>{{lecture.name}}</ion-label>
+
         <ion-radio (click)="navigateToTopicsForThisLecture(lecture.name)"></ion-radio>
-        <!-- <button ion-button (click) ="navigateToResultsPage" class="butt"></button> -->
+        <!--<button ion-button item-end clear icon-only (click) ="navigateToResultsPage" class="butt" style="padding:10px">
+          <ion-icon name="arrow-dropright"></ion-icon>
+        </button> -->
+        <button ion-button item-end clear icon-only (click)="editLecture(lecture.name)" class="butt" style="padding:10px">
+          <ion-icon name="create"></ion-icon>
+        </button>
        <button ion-button item-end clear icon-only (click)="removeLectures(lecture.name)" class="butt"><ion-icon name="trash" color="danger"></ion-icon></button>
       </ion-item>
     </ion-list>

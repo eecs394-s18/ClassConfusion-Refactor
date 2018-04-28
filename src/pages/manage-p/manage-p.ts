@@ -89,6 +89,68 @@ export class ManagePPage {
 
   }
 
+  addSpecificClass(name) {
+    if (name.length === 0) { return; }
+    this.classesRef.child(name).once('value', (snapshot) => {
+        this.classesRef.child(name); // Create new child...
+        this.classesRef.child(name).set(
+        {
+          name: name,
+        });
+        this.getClasses(); // Reload the topicList
+    });
+  }
+
+  editClass(oldName) {
+    console.log("Edit topic " + name);
+    let alert = this.alertCtrl.create({
+      title: 'Change Topic',
+      inputs: [
+        {
+          name: 'newName',
+          placeholder: oldName
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Confirm',
+          handler: data => {
+            if (data.newName) // Something was entered
+            {
+              this.classesRef.child(data.newName).once('value', (snapshot) => {
+                  // Update the name here
+                  this.getClasses(); // Reload the topicList
+                  var child = this.classesRef.child(oldName);
+                  child.once('value', (snapshot) => {
+                    this.removeClass(oldName);
+                    this.addSpecificClass(data.newName);
+                    this.getClasses();
+                  });
+              });
+            }
+            else // Nothing entered; do nothing
+            {
+              let noChangeAlert = this.alertCtrl.create({
+                title: 'No topic name entered!',
+                subTitle: 'Please try again.',
+                buttons: ['Dismiss']
+              });
+              noChangeAlert.present();
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
   removeClass(name) {
     console.log('REMOVE CLASS CALLED')
     // this.classList = [];
