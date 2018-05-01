@@ -64,6 +64,16 @@ export class TopicsSPage {
     this.topicsReady = true; // Now ready to display...
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getTopics();
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   updateVote(topicName) {
     var currentStatus = this.topicsCheckedMap.get(topicName);
     if (currentStatus != undefined) // If not first time, just flip the status

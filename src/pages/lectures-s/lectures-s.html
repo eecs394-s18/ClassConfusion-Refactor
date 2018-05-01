@@ -3,17 +3,28 @@
   <ion-navbar>
     <ion-title>Student: Lectures</ion-title>
 
-   <ion-buttons end>
-     <button ion-button icon-only (click)="getLectures()"><ion-icon name="refresh"></ion-icon> </button>
-    <button ion-button item-end clear icon-only (click)="navigateToClassesSPage()"><ion-icon name="home"></ion-icon></button>
-  </ion-buttons>
+    <ion-buttons end>
+      <!-- <button ion-button icon-only (click)="getLectures()"><ion-icon name="refresh"></ion-icon> </button> -->
+      <button ion-button item-end clear icon-only (click)="navigateToClassesSPage()">
+        <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<br>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content 
+      pullingIcon="arrow-dropdown" 
+      pullingText="Pull to refresh" 
+      refreshingSpinner="circles" 
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <br>
+  
 <div class="center">
 <h1><b>{{this.className}}</b> Lectures</h1></div>
 <p>Select a lecture to vote on its topics: </p>

@@ -1,25 +1,46 @@
-
 <ion-header>
 
   <ion-navbar>
-  	<!-- for some reason innerHTML isn't letting me send the lecture ? -->
-    <ion-title>Professor: Topics <span id="currClass"></span></ion-title>
-  <ion-buttons end>
-    <button ion-button icon-only (click)="getTopics()"><ion-icon name="refresh"></ion-icon> </button>
-    <button ion-button item-end clear icon-only (click)="navigateToManagePPage()"><ion-icon name="home"></ion-icon></button>
+    <!-- for some reason innerHTML isn't letting me send the lecture ? -->
+    <ion-title>Professor: Topics
+      <span id="currClass"></span>
+    </ion-title>
+    <ion-buttons end>
+      <!-- <button ion-button icon-only (click)="getTopics()">
+        <ion-icon name="refresh"></ion-icon>
+      </button> -->
+      <button ion-button item-end clear icon-only (click)="navigateToManagePPage()">
+        <ion-icon name="home"></ion-icon>
+      </button>
 
-  </ion-buttons>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding><br>
- <div class="center"> <h1> Topics for: <b> {{className}}</b>, Lecture: <b>{{lectureName}} </b></h1>
- </div><br>
-	<h2>Create or edit a topic: </h2>
+<ion-content padding>
+  
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content 
+      pullingIcon="arrow-dropdown" 
+      pullingText="Pull to refresh" 
+      refreshingSpinner="circles" 
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
 
-<ion-row>
+  <br>
+  <div class="center">
+    <h1> Topics for:
+      <b> {{className}}</b>, Lecture:
+      <b>{{lectureName}} </b>
+    </h1>
+  </div>
+  <br>
+  <h2>Create or edit a topic: </h2>
+
+  <ion-row>
     <ion-col col-9>
       <ion-item>
         <ion-input type="text" [(ngModel)]="newTopic" placeholder="New Topic"></ion-input>
@@ -46,8 +67,8 @@
       </ion-item>
     </ion-list>
   </div>
-<br>
-<div class = "center">
-  <button ion-button (click)="navigateToResultsForThisLectureProfessor()" class="butt">See Results</button>
-</div>
+  <br>
+  <div class="center">
+    <button ion-button (click)="navigateToResultsForThisLectureProfessor()" class="butt">See Results</button>
+  </div>
 </ion-content>

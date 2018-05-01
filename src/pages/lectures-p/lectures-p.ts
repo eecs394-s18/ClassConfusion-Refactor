@@ -67,6 +67,16 @@ export class LecturesPPage {
     this.lecturesReady = true; // Now ready to display...
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getLectures();
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   addLectures() {
     if (this.newLecture.length === 0) { return; } // Fix for issue #5
     this.lecturesRef.child(this.newLecture).once('value', (snapshot) => {
