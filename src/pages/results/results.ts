@@ -18,6 +18,7 @@ export class ResultsPage {
     commentArray: Array<any> = [];
     commentDict: Array<any> = [];
     topicsRef: any;
+    showComments: boolean = false;
 
     @ViewChild('barCanvas') barCanvas;
 
@@ -189,6 +190,10 @@ export class ResultsPage {
     //   console.log("nope");
     // }
     //currently have a dictionary {topic name: [array of comments]}
+  }
+
+  toggleComments(i) {
+    this.commentDict[i].open;
   }
 
 
