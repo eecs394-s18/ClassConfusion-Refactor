@@ -69,6 +69,16 @@ export class TopicsPPage {
     this.topicsReady = true; // Now ready to display...
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getTopics();
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   addTopics() {
     if (this.newTopic.length === 0) { return; } // Fix for issue #5
     this.topicsRef.child(this.newTopic).once('value', (snapshot) => {

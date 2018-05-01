@@ -1,25 +1,41 @@
-
 <ion-header>
 
   <ion-navbar>
 
     <ion-title>Professor: Lectures for {{this.className}}</ion-title>
 
-  <ion-buttons end>
-    <button ion-button icon-only (click)="getLectures()"><ion-icon name="refresh"></ion-icon> </button>
-    <button ion-button item-end clear icon-only (click)="navigateToManagePPage()"><ion-icon name="home"></ion-icon></button>
-  </ion-buttons>
+    <ion-buttons end>
+      <!-- <button ion-button icon-only (click)="getLectures()">
+        <ion-icon name="refresh"></ion-icon>
+      </button> -->
+      <button ion-button item-end clear icon-only (click)="navigateToManagePPage()">
+        <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-<br>
-<div class="center"><h1> Lectures for: <b>{{this.className}}</b></h1></div>
-<br>
-<h2>Create a new lecture or select an existing lecture to go to its list of topics: </h2>
-<br>
-<ion-row>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content 
+      pullingIcon="arrow-dropdown" 
+      pullingText="Pull to refresh" 
+      refreshingSpinner="circles" 
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <br>
+  <div class="center">
+    <h1> Lectures for:
+      <b>{{this.className}}</b>
+    </h1>
+  </div>
+  <br>
+  <h2>Create a new lecture or select an existing lecture to go to its list of topics: </h2>
+  <br>
+  <ion-row>
     <ion-col col-9>
       <ion-item>
         <ion-input type="text" [(ngModel)]="newLecture" placeholder="New Lecture"></ion-input>
@@ -42,7 +58,9 @@
         <button ion-button item-end clear icon-only (click)="editLecture(lecture.name)" class="butt" style="padding:10px">
           <ion-icon name="create"></ion-icon>
         </button>
-       <button ion-button item-end clear icon-only (click)="removeLectures(lecture.name)" class="butt"><ion-icon name="trash" color="danger"></ion-icon></button>
+        <button ion-button item-end clear icon-only (click)="removeLectures(lecture.name)" class="butt">
+          <ion-icon name="trash" color="danger"></ion-icon>
+        </button>
       </ion-item>
     </ion-list>
   </div>

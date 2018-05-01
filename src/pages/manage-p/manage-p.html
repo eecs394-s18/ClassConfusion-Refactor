@@ -1,24 +1,37 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title><b>PROFESSOR HOME</b></ion-title>
+    <ion-title>
+      <b>PROFESSOR HOME</b>
+    </ion-title>
 
-      <ion-buttons end>
-        <button ion-button icon-only (click)="getClasses()">
-          <ion-icon name="refresh"></ion-icon>
-        </button>
+    <ion-buttons end>
+      <!-- <button ion-button icon-only (click)="getClasses()">
+        <ion-icon name="refresh"></ion-icon>
+      </button> -->
 
-      </ion-buttons>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content 
+      pullingIcon="arrow-dropdown" 
+      pullingText="Pull to refresh" 
+      refreshingSpinner="circles" 
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
 
   <br>
-<div class="center">
-  <h1> Welcome, <b> Professor!</b></h1></div>
+  <div class="center">
+    <h1> Welcome,
+      <b> Professor!</b>
+    </h1>
+  </div>
   <h1> Create a new class or view a class's lectures: </h1>
 
   <ion-row>
@@ -42,7 +55,9 @@
         <button ion-button item-end clear icon-only (click)="editClass(class.name)" class="butt" style="padding:10px">
           <ion-icon name="create"></ion-icon>
         </button>
-        <button ion-button item-end clear icon-only (click)="removeClass(class.name)" class="butt"><ion-icon name="trash" color="danger"></ion-icon></button>
+        <button ion-button item-end clear icon-only (click)="removeClass(class.name)" class="butt">
+          <ion-icon name="trash" color="danger"></ion-icon>
+        </button>
       </ion-item>
     </ion-list>
   </div>
