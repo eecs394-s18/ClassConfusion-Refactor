@@ -25,6 +25,7 @@ export class ClassesSPage {
 
   // EVERYTHING FOR ADDING CLASSES INITIALLY
   classList: Array<any> = [];
+  fullClassList: Array<any> = [];
   newClass = '';
   classesRef: any; // Reference that is frequenly used
   ready: boolean = false; // Check if topics are retrieved before loading list of checkboxes
@@ -72,7 +73,7 @@ export class ClassesSPage {
         snapshot.forEach((child) => {
             // console.log(child.val())
             this.classList.push(child.val());
-
+            this.fullClassList.push(child.val());
             });
 
       });
@@ -80,35 +81,6 @@ export class ClassesSPage {
     console.log("[Alert] Retrieved classes from Firebase.");
     this.ready = true; // Now ready to display...
    }
-
-
-  // addClass() {
-  //   console.log('ADD CLASS CALLED')
-  //   // this.classList = [];
-  //   if (this.newClass.length === 0) { return; } // Fix for issue #5
-  //   this.classesRef.child(this.newClass).once('value', (snapshot) => {
-  //     if (snapshot.exists()) {
-  //       this.presentAlert();
-  //     }
-  //     else {
-  //       this.ready = false;
-  //       this.firebaseProvider.addClass(this.newClass);
-  //       this.newClass = ""; // empty out the new class field
-  //       this.getClasses();
-  //     }
-  //   });
-
-  // }
-
-  // removeClass(name) {
-  //   console.log('REMOVE CLASS CALLED')
-  //   // this.classList = [];
-  //   this.ready = false;
-  //   this.firebaseProvider.removeClass(name);
-  //   this.checkedMap.delete(name);
-  //   this.getClasses();
-  // }
-
 
   presentAlert() {
     let alert = this.alertCtrl.create({
@@ -118,6 +90,45 @@ export class ClassesSPage {
     alert.present();
   }
 
+  async onInput(ev: any) {
+    console.log("printing searchbar event");
+    console.log(ev);
+    let val = ev.srcElement.value;
+    console.log(val);
+    this.classList.filter((item) => {
+        console.log(item.name);
+    });
+
+    if (val) {
+      try {
+        this.classList = this.fullClassList.filter((item) => {
+          if (item.name) {
+            let currClass = item.name.toLowerCase();
+            if (currClass.substring(0,val.length).toLowerCase() == val.toLowerCase()) {
+              console.log("items of substring");
+              console.log(item);
+              return item;
+            }
+          }
+        });
+      } catch(err) {
+        console.log(val);
+        console.log("could not filter classList");
+        console.log(err);
+      }
+    }
+    else {
+      for (let i=0; i<this.fullClassList.length; i++) {
+        if (i < this.classList.length-1) {
+          this.classList[i] = this.fullClassList[i];
+        }
+        else {
+          this.classList.push(this.fullClassList[i]);
+        }
+      }
+      return this.classList;
+    }
+  }
 
 
 }

@@ -166,6 +166,7 @@ export class ResultsPage {
         console.log("printing commentRef")
         console.log(commentRef);
         commentRef.on('value', function(snapshot) {
+          commentList = [];
           console.log(snapshot.val());
           snapshot.forEach((child) => {
             //this.commentArray.push(child.val());

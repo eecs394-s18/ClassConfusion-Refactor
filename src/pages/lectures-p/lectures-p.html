@@ -18,6 +18,7 @@
 <div class="center"><h1> Lectures for: <b>{{this.className}}</b></h1></div>
 <br>
 <h2>Create a new lecture or select an existing lecture to go to its list of topics: </h2>
+
 <br>
 <ion-row>
     <ion-col col-9>
@@ -29,6 +30,13 @@
       <button ion-button (click)="addLectures()">Add!</button>
     </ion-col>
   </ion-row>
+
+  <ion-searchbar
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar>
 
   <div *ngIf="lecturesReady">
     <ion-list>

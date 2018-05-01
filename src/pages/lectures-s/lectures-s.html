@@ -17,6 +17,12 @@
 <div class="center">
 <h1><b>{{this.className}}</b> Lectures</h1></div>
 <p>Select a lecture to vote on its topics: </p>
+<ion-searchbar
+  [(ngModel)]="myInput"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="onInput($event)"
+  (ionCancel)="onCancel($event)">
+</ion-searchbar>
 	<div *ngIf="lecturesReady">
     <ion-list>
       <ion-item *ngFor="let lecture of lectureList">

@@ -26,6 +26,7 @@ export class LecturesPPage {
   }
 
   lectureList: Array<any> = [];
+  fullLectureList: Array<any> = [];
   newLecture = '';
   className = '';
   lecturesRef: any; // Reference that is frequenly used
@@ -58,6 +59,7 @@ export class LecturesPPage {
     this.lecturesRef.on('value', (snapshot) => {
       snapshot.forEach((child) => {
         this.lectureList.push(child.val());
+        this.fullLectureList.push(child.val());
       });
     });
     console.log(this.lectureList)
@@ -95,6 +97,46 @@ export class LecturesPPage {
       buttons: ['Dismiss']
     });
     alert.present();
+  }
+
+  async onInput(ev: any) {
+    console.log("printing searchbar event");
+    console.log(ev);
+    let val = ev.srcElement.value;
+    console.log(val);
+    this.lectureList.filter((item) => {
+        console.log(item.name);
+    });
+
+    if (val) {
+      try {
+        this.lectureList = this.fullLectureList.filter((item) => {
+          if (item.name) {
+            let currClass = item.name.toLowerCase();
+            if (currClass.substring(0,val.length).toLowerCase() == val.toLowerCase()) {
+              console.log("items of substring");
+              console.log(item);
+              return item;
+            }
+          }
+        });
+      } catch(err) {
+        console.log(val);
+        console.log("could not filter classList");
+        console.log(err);
+      }
+    }
+    else {
+      for (let i=0; i<this.fullLectureList.length; i++) {
+        if (i < this.lectureList.length-1) {
+          this.lectureList[i] = this.fullLectureList[i];
+        }
+        else {
+          this.lectureList.push(this.fullLectureList[i]);
+        }
+      }
+      return this.lectureList;
+    }
   }
 
 
