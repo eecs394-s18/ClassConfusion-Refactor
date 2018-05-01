@@ -82,6 +82,17 @@ export class ClassesSPage {
    }
 
 
+   doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getClasses();
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
+
   // addClass() {
   //   console.log('ADD CLASS CALLED')
   //   // this.classList = [];

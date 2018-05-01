@@ -1,37 +1,56 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title><b>STUDENT HOME</b></ion-title>
+    <ion-title>
+      <b>STUDENT HOME</b>
+    </ion-title>
 
-  <ion-buttons end>
-    <button ion-button icon-only (click)="getClasses()"><ion-icon name="refresh"></ion-icon> </button>
-    <button ion-button item-end clear icon-only (click)="getClasses()"><ion-icon name="home"></ion-icon></button>
-  </ion-buttons>
+    <ion-buttons end>
+      <!-- <button ion-button icon-only (click)="getClasses()">
+        <ion-icon name="refresh"></ion-icon>
+      </button> -->
+      <button ion-button item-end clear icon-only (click)="getClasses()">
+        <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<!-- <button ion-button (click)="navigateToLecturesSPage()">STUDENT lecture page</button> -->
-	<!-- <p>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content 
+      pullingIcon="arrow-dropdown" 
+      pullingText="Pull to refresh" 
+      refreshingSpinner="circles" 
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <!-- <button ion-button (click)="navigateToLecturesSPage()">STUDENT lecture page</button> -->
+  <!-- <p>
 		On this page <b>students </b> can:
 	</p> -->
-<!-- 	<ul>
+  <!-- 	<ul>
 		<li> Query for course</li>
 		<li> Add course to their schedule</li>
 		<li> View and select classes currently on their schedule</li>
 	</ul> -->
 
-	<!-- FILLER - DO THIS!!! -->
-	<!-- <h2> Search for a course and add it to your schedule here: TODO</h2> -->
+  <!-- FILLER - DO THIS!!! -->
+  <!-- <h2> Search for a course and add it to your schedule here: TODO</h2> -->
   <div class="center">
-   <br><h1> Welcome, <b>Student!</b></h1>
- </div>
+    <br>
+    <h1> Welcome,
+      <b>Student!</b>
+    </h1>
+  </div>
   <h2> My Classes </h2>
   <p>Select one of your classes:</p>
-	<div *ngIf="ready">
-    <ion-list >
+  <div *ngIf="ready">
+    <ion-list>
       <ion-item *ngFor="let c of classList">
         <ion-label>{{c.name}}</ion-label>
         <ion-radio (click)="navigateToLecturesForThisClassStudent(c.name)"> </ion-radio>

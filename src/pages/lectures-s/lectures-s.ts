@@ -59,7 +59,6 @@ export class LecturesSPage {
        console.log('Lecture we clicked: ' + currLecture);
     }
 
-
   getLectures() {
     this.lecturesReady = false;
     this.lectureList = []; // this doesn't work - wipe to prevent duplicates from appearing
@@ -71,6 +70,16 @@ export class LecturesSPage {
     console.log(this.lectureList)
     console.log("[Alert] Retrieved lectures from Firebase.");
     this.lecturesReady = true; // Now ready to display...
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getLectures();
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
   }
 
   presentAlert() {
