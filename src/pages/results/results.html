@@ -30,6 +30,14 @@
       </ion-card-content>
  </ion-card>
 
+   <ion-list>
+     <ion-item *ngFor = "let topic of commentDict">
+       <ion-label>{{topic.key}}</ion-label>
+       <ion-label>{{topic.value}}</ion-label>
+     </ion-item>
+
+   </ion-list>
+
  <!-- <h3> Based on the voting, the topic that is least understood is: <b><span id="WorstTopic"></span></b></h3> -->
 
 </ion-content>
