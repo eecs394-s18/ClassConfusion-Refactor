@@ -48,9 +48,15 @@
     </h1>
   </div>
   <h2> My Classes </h2>
-  <p>Select one of your classes:</p>
-  <div *ngIf="ready">
-    <ion-list>
+  <!-- <p>Select one of your classes:</p> -->
+  <ion-searchbar
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+	<div *ngIf="ready">
+    <ion-list >
       <ion-item *ngFor="let c of classList">
         <ion-label>{{c.name}}</ion-label>
         <ion-radio (click)="navigateToLecturesForThisClassStudent(c.name)"> </ion-radio>

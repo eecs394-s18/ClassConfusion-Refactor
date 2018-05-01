@@ -25,6 +25,7 @@ export class ClassesSPage {
 
   // EVERYTHING FOR ADDING CLASSES INITIALLY
   classList: Array<any> = [];
+  fullClassList: Array<any> = [];
   newClass = '';
   classesRef: any; // Reference that is frequenly used
   ready: boolean = false; // Check if topics are retrieved before loading list of checkboxes
@@ -72,7 +73,7 @@ export class ClassesSPage {
         snapshot.forEach((child) => {
             // console.log(child.val())
             this.classList.push(child.val());
-
+            this.fullClassList.push(child.val());
             });
 
       });
@@ -80,7 +81,6 @@ export class ClassesSPage {
     console.log("[Alert] Retrieved classes from Firebase.");
     this.ready = true; // Now ready to display...
    }
-
 
    doRefresh(refresher) {
     console.log('Begin async operation', refresher);
@@ -120,7 +120,6 @@ export class ClassesSPage {
   //   this.getClasses();
   // }
 
-
   presentAlert() {
     let alert = this.alertCtrl.create({
       title: 'This item is already in the list!',
@@ -129,6 +128,45 @@ export class ClassesSPage {
     alert.present();
   }
 
+  async onInput(ev: any) {
+    console.log("printing searchbar event");
+    console.log(ev);
+    let val = ev.srcElement.value;
+    console.log(val);
+    this.classList.filter((item) => {
+        console.log(item.name);
+    });
+
+    if (val) {
+      try {
+        this.classList = this.fullClassList.filter((item) => {
+          if (item.name) {
+            let currClass = item.name.toLowerCase();
+            if (currClass.substring(0,val.length).toLowerCase() == val.toLowerCase()) {
+              console.log("items of substring");
+              console.log(item);
+              return item;
+            }
+          }
+        });
+      } catch(err) {
+        console.log(val);
+        console.log("could not filter classList");
+        console.log(err);
+      }
+    }
+    else {
+      for (let i=0; i<this.fullClassList.length; i++) {
+        if (i < this.classList.length-1) {
+          this.classList[i] = this.fullClassList[i];
+        }
+        else {
+          this.classList.push(this.fullClassList[i]);
+        }
+      }
+      return this.classList;
+    }
+  }
 
 
 }
