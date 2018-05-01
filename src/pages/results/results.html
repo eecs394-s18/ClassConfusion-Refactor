@@ -30,22 +30,30 @@
       </ion-card-content>
  </ion-card>
 
-
+<br>
 <ion-list class="accordion-list" *ngIf="commentDict">
+  <h4>Click on topic to view comments </h4>
   <!-- Topics level -->
   <ion-list-header *ngFor="let topic of commentDict; let i=index" no-padding>
     <!-- Toggle button -->
-    <button ion-button detail-none (click)="toggleComments(i)" [ngClass]="{'section-active': topic.open, 'section': !topic.open}">
+    <button  class="topicButton" ion-button detail-none (click)="toggleComments(i)" [ngClass]="{'section-active': topic.open, 'section': !topic.open}">
+      <ion-icon item-left name="arrow-forward" *ngIf="!topic.open"></ion-icon>
+      <ion-icon item-left name="arrow-down" *ngIf="topic.open"></ion-icon>
       {{topic.key}}
     </button>
 
-    <ion-list *ngIf="topic.value && topic.open" no-lines no-padding>
-      <!-- Toggle button -->
-      <div *ngFor="let comment of topic.value; let j=index">
+    <ion-list *ngIf="topic.value && topic.open" no-padding>
+      <ion-list-header *ngFor="let comment of topic.value; let j=index">
+        {{comment}}
+      </ion-list-header>
+
+
+
+      <!-- <div *ngFor="let comment of topic.value; let j=index">
       <div class="comment" detail-none>
         {{comment}}
       </div>
-    </div>
+    </div> -->
     </ion-list>
 
 
