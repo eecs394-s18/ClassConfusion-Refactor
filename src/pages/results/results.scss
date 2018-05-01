@@ -1,3 +1,26 @@
 page-results {
-
+  .accordion-list {
+    height: 100%;
+  }
+  .section {
+    background: #fff;
+    color: #000;
+    margin-bottom: 4px;
+  }
+  .section-active {
+    background: #ffc400;
+    color: #fff;
+  }
+  .comment {
+    margin: 0;
+  }
+  .label {
+    margin: 0px;
+  }
+  .list {
+    margin-bottom: 4px;
+  }
+  .list-md + ion-list ion-list-header {
+    margin-top: 0px;
+  }
 }

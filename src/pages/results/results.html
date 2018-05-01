@@ -30,6 +30,29 @@
       </ion-card-content>
  </ion-card>
 
+
+<ion-list class="accordion-list" *ngIf="commentDict">
+  <!-- Topics level -->
+  <ion-list-header *ngFor="let topic of commentDict; let i=index" no-padding>
+    <!-- Toggle button -->
+    <button ion-button detail-none>
+      {{topic.key}}
+    </button>
+
+    <ion-list *ngIf="topic.value">
+      <!-- Toggle button -->
+      <div *ngFor="let comment of topic.value; let j=index" no-lines no-padding>
+      <div class="comment" detail-none>
+        {{comment}}
+      </div>
+    </div>
+    </ion-list>
+
+
+  </ion-list-header>
+</ion-list>
+
+
  <!-- <h3> Based on the voting, the topic that is least understood is: <b><span id="WorstTopic"></span></b></h3> -->
 
 </ion-content>

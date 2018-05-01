@@ -4,7 +4,8 @@ import { Chart } from 'chart.js';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { FirebaseApp } from 'angularfire2';
 import { FirebaseListObservable } from 'angularfire2/database-deprecated';
-import {HomePage} from '../home/home'
+import {HomePage} from '../home/home';
+
 @IonicPage()
 @Component({
   selector: 'page-results',
@@ -12,6 +13,11 @@ import {HomePage} from '../home/home'
 })
 
 export class ResultsPage {
+    topicsReady: boolean = false;
+    topicList: Array<any> = [];
+    commentArray: Array<any> = [];
+    commentDict: Array<any> = [];
+    topicsRef: any;
 
     @ViewChild('barCanvas') barCanvas;
 
@@ -20,27 +26,30 @@ export class ResultsPage {
     private db = null;
 
     constructor(public navCtrl: NavController, public firebaseProvider: FirebaseProvider, private fbApp: FirebaseApp, public navParams: NavParams) {
-
-
-
-        this.db = this.fbApp.database();
-        this.lectureName = navParams.get('currLec');
+      this.db = this.fbApp.database();
+      this.lectureName = navParams.get('currLec');
   		this.className = navParams.get('currClass');
-
+      this.topicsRef =  this.fbApp.database().ref('/classes/' + this.className + '/lectures/' + this.lectureName + '/topics/');
+      this.getTopics();
+      console.log("printing topicList");
+      console.log(this.topicList);
+      this.getComments();
     }
 
     lectureName = '';
   	className = '';
 
     ionViewDidLoad() {
-
+        this.getTopics();
+        //this.topicsReady = false;
     	//this isn't working
     	// document.getElementById('ClassName').innerHTML = this.className;
      // 	document.getElementById('LectureName').innerHTML = this.lectureName;
-
         let voteArray = [];
         let nameArray = [];
-        let colorArray = []
+        let colorArray = [];
+        // let this.commentArray = [];
+        // let this.commentDict = {};
         var voteCountRef = this.db.ref('classes/' + this.className + '/lectures/' + this.lectureName + '/topics/');
         let worstTopic = ''
 
@@ -53,7 +62,6 @@ export class ResultsPage {
 
               console.log("Vote array: ");
               console.log(voteArray);
-
               console.log("Name array: ");
               console.log(nameArray);
 
@@ -71,11 +79,11 @@ export class ResultsPage {
             console.log(worstTopic)
             console.log(worstTopicIndex)
 
+
             //not working
             // document.getElementById('WorstTopic').innerHTML = worstTopic;
 
         });
-
 
         this.barChart = new Chart(this.barCanvas.nativeElement, {
 
@@ -127,6 +135,64 @@ export class ResultsPage {
     }
     navigateToHomePage(): void {
     this.navCtrl.push(HomePage);
+  }
+
+  async getTopics() {
+  //  this.topicsReady = false;
+    this.topicList = [];
+    this.topicsRef.on('value', (snapshot) => {
+      snapshot.forEach((child) => {
+        this.topicList.push(child.val());
+      });
+    });
+    console.log("HELL YEAH RETRIEVING TOPICS");
+    //this.topicsReady = true;
+  }
+
+
+  async getComments() {
+    //if (this.topicsReady) {
+      let commentRef;
+      let commentList = [];
+      for (let i=0; i<this.topicList.length;i++) {
+        let name = this.topicList[i].name;
+        let comment = this.topicList[i].comments;
+
+
+
+        console.log("printing comment ");
+        console.log(comment);
+        commentRef = this.fbApp.database().ref('/classes/' + this.className + '/lectures/' + this.lectureName + '/topics/' + name + '/comments');
+        console.log("printing commentRef")
+        console.log(commentRef);
+        commentRef.on('value', function(snapshot) {
+          console.log(snapshot.val());
+          snapshot.forEach((child) => {
+            //this.commentArray.push(child.val());
+            commentList.push(child.val());
+            return false;
+          });
+        });
+        this.commentDict.push({
+          key: name,
+          value: commentList,
+        });
+        //console.log(this.commentArray);
+        console.log("printing commentList");
+        console.log(commentList);
+        console.log("printing commentDict");
+        console.log(this.commentDict);
+
+      }
+    // }
+    // else {
+    //   console.log("nope");
+    // }
+    //currently have a dictionary {topic name: [array of comments]}
+  }
+
+  async toggleComments(i) {
+    this.commentDict[i].open = !this.commentDict[i].open;
   }
 
 
