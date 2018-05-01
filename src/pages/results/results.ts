@@ -191,8 +191,13 @@ export class ResultsPage {
     //currently have a dictionary {topic name: [array of comments]}
   }
 
-  async toggleComments(i) {
-    this.commentDict[i].open = !this.commentDict[i].open;
+  toggleComments(i) {
+    try {
+      this.commentDict[i].open = !this.commentDict[i].open;
+    } catch (err) {
+      console.log("error commentDict null");
+    }
+
   }
 
 

@@ -35,13 +35,13 @@
   <!-- Topics level -->
   <ion-list-header *ngFor="let topic of commentDict; let i=index" no-padding>
     <!-- Toggle button -->
-    <button ion-button detail-none>
+    <button ion-button detail-none (click)="toggleComments(i)" [ngClass]="{'section-active': topic.open, 'section': !topic.open}">
       {{topic.key}}
     </button>
 
-    <ion-list *ngIf="topic.value">
+    <ion-list *ngIf="topic.value && topic.open" no-lines no-padding>
       <!-- Toggle button -->
-      <div *ngFor="let comment of topic.value; let j=index" no-lines no-padding>
+      <div *ngFor="let comment of topic.value; let j=index">
       <div class="comment" detail-none>
         {{comment}}
       </div>
