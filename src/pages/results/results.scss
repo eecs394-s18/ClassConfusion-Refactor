@@ -23,4 +23,12 @@ page-results {
   .list-md + ion-list ion-list-header {
     margin-top: 0px;
   }
+  .topicButton {
+    width: 100%;
+    text-align: left;
+    justify-content: left;
+  }
+  .button-inner {
+    justify-content: left;
+  }
 }
