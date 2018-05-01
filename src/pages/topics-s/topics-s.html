@@ -3,7 +3,8 @@
   <ion-navbar>
     <ion-title>Student: Topics</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="getTopics()"><ion-icon name="refresh"></ion-icon> </button>
+      <!-- <button ion-button icon-only (click)="getTopics()"><ion-icon name="refresh"></ion-icon> </button> -->
+      <button ion-button icon-only><ion-icon name="refresh"></ion-icon> </button>
     <button ion-button item-end clear icon-only (click)="navigateToClassesSPage()"><ion-icon name="home"></ion-icon></button>
   </ion-buttons>
   </ion-navbar>
@@ -22,6 +23,16 @@
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
 
 <ion-content padding>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+      </ion-refresher-content>
+  </ion-refresher>
+
 <br>
 <div class="center">
   <h1> Topics for: <b> {{className}}</b>, Lecture: <b>{{lectureName}} </b></h1></div>

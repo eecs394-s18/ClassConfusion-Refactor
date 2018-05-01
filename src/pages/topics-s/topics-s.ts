@@ -52,6 +52,16 @@ export class TopicsSPage {
     this.navCtrl.push(ClassesSPage);
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getTopics();
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   getTopics() {
     this.topicsReady = false;
     this.topicList = []; // this doesn't work - wipe to prevent duplicates from appearing
