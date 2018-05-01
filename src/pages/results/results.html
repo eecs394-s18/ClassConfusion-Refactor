@@ -31,31 +31,21 @@
  </ion-card>
 
 
- <ion-list>
-   <li *ngFor = "let topic of commentDict; let i=index">
-     <div>{{topic.key}}</div>
-     <ul>
-       <li *ngFor = "let comment of topic.value">{{comment}}</li>
-     </ul>
-   </li>
- </ion-list>
-
-
-<ion-list class="accordion-list">
+<ion-list class="accordion-list" *ngIf="commentDict">
   <!-- Topics level -->
-  <ion-list-header *ngFor="let topic of commentDict" no-lines no-padding>
+  <ion-list-header *ngFor="let topic of commentDict; let i=index" no-padding>
     <!-- Toggle button -->
     <button ion-button detail-none>
       {{topic.key}}
     </button>
 
-    <ion-list *ngIf="topic.value" no-padding>
+    <ion-list *ngIf="topic.value">
       <!-- Toggle button -->
-      <ion-list-header *ngFor="let comment of topic.value; let j=index">
-      <button ion-button class="comment" detail-none>
+      <div *ngFor="let comment of topic.value; let j=index" no-lines no-padding>
+      <div class="comment" detail-none>
         {{comment}}
-      </button>
-      </ion-list-header>
+      </div>
+    </div>
     </ion-list>
 
 
