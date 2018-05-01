@@ -103,7 +103,7 @@ export class ResultsPage {
                 // },
 
                 {
-                    label: 'Did not Understand',
+                    label: 'Did not understand',
                     data: voteArray,
                     backgroundColor: colorArray
                 },
