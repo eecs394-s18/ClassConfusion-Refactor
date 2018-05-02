@@ -1,9 +1,9 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="prof">
     <!-- for some reason innerHTML isn't letting me send the lecture ? -->
     <ion-title>Professor: Topics
-      <span id="currClass"></span>
+
     </ion-title>
     <ion-buttons end>
       <!-- <button ion-button icon-only (click)="getTopics()">
@@ -20,12 +20,12 @@
 
 
 <ion-content padding>
-  
+
   <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content 
-      pullingIcon="arrow-dropdown" 
-      pullingText="Pull to refresh" 
-      refreshingSpinner="circles" 
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
@@ -47,7 +47,7 @@
       </ion-item>
     </ion-col>
     <ion-col>
-      <button ion-button (click)="addTopics()">Add!</button>
+      <button ion-button (click)="addTopics()" color="butt">Add!</button>
     </ion-col>
   </ion-row>
 
@@ -56,7 +56,7 @@
       <ion-item>
         <ion-label>{{topic.name}}</ion-label>
 
-        <button ion-button item-end clear icon-only (click)="editTopic(topic.name)" class="butt" style="padding:10px">
+        <button ion-button item-end clear icon-only (click)="editTopic(topic.name)" class="butt" style="padding:10px" color="comment">
           <ion-icon name="create"></ion-icon>
         </button>
 
@@ -69,6 +69,6 @@
   </div>
   <br>
   <div class="center">
-    <button ion-button (click)="navigateToResultsForThisLectureProfessor()" class="butt">See Results</button>
+    <button ion-button (click)="navigateToResultsForThisLectureProfessor()" class="butt" color="butt">See Results</button>
   </div>
 </ion-content>

@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="prof">
     <ion-title>Student: Topics</ion-title>
     <ion-buttons end>
       <!-- <button ion-button icon-only (click)="getTopics()"><ion-icon name="refresh"></ion-icon> </button> -->
@@ -26,10 +26,10 @@
 <ion-content padding>
 
   <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content 
-      pullingIcon="arrow-dropdown" 
-      pullingText="Pull to refresh" 
-      refreshingSpinner="circles" 
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
@@ -48,10 +48,10 @@
       <ion-item>
         <ion-label>{{topic.name}}</ion-label>
 
-        <ion-checkbox [(ngModel)]="topicsCheckedMap[topic.name]" (ionChange)="updateVote(topic.name);">
+        <ion-checkbox [(ngModel)]="topicsCheckedMap[topic.name]" (ionChange)="updateVote(topic.name);" color="danger">
         </ion-checkbox>
 
-        <button ion-button item-end clear icon-only (click)="addComment(topic.name)" class="butt" style="padding:10px">
+        <button ion-button item-end clear icon-only (click)="addComment(topic.name)" class="butt" style="padding:10px" color="comment">
           <ion-icon name="chatbubbles"></ion-icon>
         </button>
 
@@ -60,7 +60,7 @@
   </div>
   <br>
   <div class="center">
-    <button ion-button (click)="navigateToResultsForThisLectureStudent()" class="butt">See Results</button>
+    <button ion-button (click)="navigateToResultsForThisLectureStudent()" class="butt" color="butt">See Results</button>
   </div>
 
 

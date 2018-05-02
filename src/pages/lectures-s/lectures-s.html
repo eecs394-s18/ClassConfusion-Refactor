@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="prof">
     <ion-title>Student: Lectures</ion-title>
 
     <ion-buttons end>
@@ -16,15 +16,15 @@
 
 <ion-content padding>
   <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content 
-      pullingIcon="arrow-dropdown" 
-      pullingText="Pull to refresh" 
-      refreshingSpinner="circles" 
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
   <br>
-  
+
 <div class="center">
 <h1><b>{{this.className}}</b> Lectures</h1></div>
 <p>Select a lecture to vote on its topics: </p>
@@ -38,7 +38,7 @@
     <ion-list>
       <ion-item *ngFor="let lecture of lectureList">
         <ion-label>{{lecture.name}}</ion-label>
-        <ion-radio (click)="navigateToTopicsForThisLectureStudent(lecture.name)"> </ion-radio>
+        <ion-radio (click)="navigateToTopicsForThisLectureStudent(lecture.name)" color="list-items"> </ion-radio>
         <!-- <ion-radio icon-only (click)="navigateToTopicsForThisLectureStudent(lecture.name)" value="{{class.name}}"></ion-radio> -->
       </ion-item>
     </ion-list>
