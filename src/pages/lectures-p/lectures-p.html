@@ -1,8 +1,8 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="prof">
 
-    <ion-title>Professor: Lectures for {{this.className}}</ion-title>
+    <ion-title>Professor: Lectures</ion-title>
 
     <ion-buttons end>
       <!-- <button ion-button icon-only (click)="getLectures()">
@@ -18,10 +18,10 @@
 
 <ion-content padding>
   <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content 
-      pullingIcon="arrow-dropdown" 
-      pullingText="Pull to refresh" 
-      refreshingSpinner="circles" 
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
@@ -42,7 +42,7 @@
       </ion-item>
     </ion-col>
     <ion-col>
-      <button ion-button (click)="addLectures()">Add!</button>
+      <button ion-button (click)="addLectures()" color="butt">Add!</button>
     </ion-col>
   </ion-row>
 
@@ -58,11 +58,11 @@
       <ion-item *ngFor="let lecture of lectureList">
         <ion-label>{{lecture.name}}</ion-label>
 
-        <ion-radio (click)="navigateToTopicsForThisLecture(lecture.name)"></ion-radio>
+        <ion-radio (click)="navigateToTopicsForThisLecture(lecture.name)" color="list-items"></ion-radio>
         <!--<button ion-button item-end clear icon-only (click) ="navigateToResultsPage" class="butt" style="padding:10px">
           <ion-icon name="arrow-dropright"></ion-icon>
         </button> -->
-        <button ion-button item-end clear icon-only (click)="editLecture(lecture.name)" class="butt" style="padding:10px">
+        <button ion-button item-end clear icon-only (click)="editLecture(lecture.name)" class="butt" style="padding:10px" color="comment">
           <ion-icon name="create"></ion-icon>
         </button>
         <button ion-button item-end clear icon-only (click)="removeLectures(lecture.name)" class="butt">

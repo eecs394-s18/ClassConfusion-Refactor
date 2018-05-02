@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="comment">
     <ion-title>
       ClassConfusion v.2
     </ion-title>
@@ -15,15 +15,15 @@
 <ion-list radio-group [(ngModel)]="relationship">
   <ion-item>
   <ion-label>Login Page</ion-label>
-  <ion-radio (click)="navigateToLoginPage()"></ion-radio>
+  <ion-radio (click)="navigateToLoginPage()" color="list-items"></ion-radio>
   </ion-item>
   <ion-item>
   <ion-label>Student</ion-label>
-  <ion-radio (click)="navigateToClassesSPage()"></ion-radio>
+  <ion-radio (click)="navigateToClassesSPage()" color="list-items"></ion-radio>
   </ion-item>
   <ion-item>
   <ion-label>Professor</ion-label>
-  <ion-radio (click)="navigateToManagePPage()"></ion-radio>
+  <ion-radio (click)="navigateToManagePPage()" color="list-items"></ion-radio>
   </ion-item>
 </ion-list>
 

@@ -1,11 +1,14 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="prof">
     <ion-title>
       <b>PROFESSOR HOME</b>
     </ion-title>
 
     <ion-buttons end>
+      <button ion-button item-end clear icon-only (click)="navigateToManagePPage()">
+        <ion-icon name="home"></ion-icon>
+      </button>
       <!-- <button ion-button icon-only (click)="getClasses()">
         <ion-icon name="refresh"></ion-icon>
       </button> -->
@@ -18,10 +21,10 @@
 
 <ion-content padding>
   <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content 
-      pullingIcon="arrow-dropdown" 
-      pullingText="Pull to refresh" 
-      refreshingSpinner="circles" 
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
@@ -39,9 +42,10 @@
       <ion-item>
         <ion-input type="text" [(ngModel)]="newClass" placeholder="New Class"></ion-input>
       </ion-item>
+      <br>
     </ion-col>
     <ion-col>
-      <button ion-button (click)="addClass()">Add!</button>
+      <button ion-button (click)="addClass()" color="butt">Add!</button>
     </ion-col>
   </ion-row>
 
@@ -56,10 +60,9 @@
     <ion-list>
       <ion-item *ngFor="let class of classList">
         <ion-label>{{class.name}}</ion-label>
-        <ion-radio (click)="navigateToLecturesForThisClass(class.name)"> </ion-radio>
+        <ion-radio (click)="navigateToLecturesForThisClass(class.name)" color="list-items"> </ion-radio>
 
-        <!-- <button ion-button item-end clear icon-only (click)="navigateToLecturesForThisClass(class.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button> -->
-        <button ion-button item-end clear icon-only (click)="editClass(class.name)" class="butt" style="padding:10px">
+        <button ion-button item-end clear icon-only (click)="editClass(class.name)" class="butt" style="padding:10px" color="comment">
           <ion-icon name="create"></ion-icon>
         </button>
         <button ion-button item-end clear icon-only (click)="removeClass(class.name)" class="butt">

@@ -1,7 +1,7 @@
 
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="prof">
     <ion-title>Results</ion-title>
 
   <ion-buttons end>
@@ -24,7 +24,8 @@
 <ion-card>
       <ion-card-header>
         <div class="center">
-        <b>Results for {{className}}: {{lectureName}}</b>
+        <b>Results for {{className}}</b><br>
+        <b>Lecture: {{lectureName}}</b>
       </div>
       </ion-card-header>
       <ion-card-content>
@@ -38,7 +39,7 @@
   <!-- Topics level -->
   <ion-list-header *ngFor="let topic of commentDict; let i=index" no-padding>
     <!-- Toggle button -->
-    <button  class="topicButton" ion-button detail-none (click)="toggleComments(i)" [ngClass]="{'section-active': topic.open, 'section': !topic.open}">
+    <button  class="topicButton" ion-button detail-none (click)="toggleComments(i)" [ngClass]="{'section-active': topic.open, 'section': !topic.open}" >
       <ion-icon item-left name="arrow-forward" *ngIf="!topic.open"></ion-icon>
       <ion-icon item-left name="arrow-down" *ngIf="topic.open"></ion-icon>
       {{topic.key}}

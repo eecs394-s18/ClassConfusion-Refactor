@@ -36,7 +36,7 @@ export class TopicsPPage {
   ionViewDidLoad() {
   		// not working for some weird reason
   	    // document.getElementById('currLecture').innerHTML = this.navParams.get('currLec');
-  	    document.getElementById('currClass').innerHTML = this.className;
+  	    // document.getElementById('currClass').innerHTML = this.className;
   }
 
   navigateToHomePage(): void {
