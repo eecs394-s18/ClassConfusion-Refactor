@@ -92,34 +92,6 @@ export class ClassesSPage {
     }, 2000);
   }
 
-
-  // addClass() {
-  //   console.log('ADD CLASS CALLED')
-  //   // this.classList = [];
-  //   if (this.newClass.length === 0) { return; } // Fix for issue #5
-  //   this.classesRef.child(this.newClass).once('value', (snapshot) => {
-  //     if (snapshot.exists()) {
-  //       this.presentAlert();
-  //     }
-  //     else {
-  //       this.ready = false;
-  //       this.firebaseProvider.addClass(this.newClass);
-  //       this.newClass = ""; // empty out the new class field
-  //       this.getClasses();
-  //     }
-  //   });
-
-  // }
-
-  // removeClass(name) {
-  //   console.log('REMOVE CLASS CALLED')
-  //   // this.classList = [];
-  //   this.ready = false;
-  //   this.firebaseProvider.removeClass(name);
-  //   this.checkedMap.delete(name);
-  //   this.getClasses();
-  // }
-
   presentAlert() {
     let alert = this.alertCtrl.create({
       title: 'This item is already in the list!',
@@ -131,7 +103,7 @@ export class ClassesSPage {
   async onInput(ev: any) {
     console.log("printing searchbar event");
     console.log(ev);
-    let val = ev.srcElement.value;
+    let val = ev.target.value;
     console.log(val);
     this.classList.filter((item) => {
         console.log(item.name);

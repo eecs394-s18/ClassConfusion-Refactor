@@ -95,7 +95,7 @@ export class LecturesSPage {
   async onInput(ev: any) {
     console.log("printing searchbar event");
     console.log(ev);
-    let val = ev.srcElement.value;
+    let val = ev.target.value;
     console.log(val);
     this.lectureList.filter((item) => {
         console.log(item.name);
