@@ -1,13 +1,23 @@
 <ion-header>
-  <ion-navbar color="comment">
-    <ion-title>ClassConfusion</ion-title>
+  <ion-navbar color="secondary">
+    <ion-title class="center"><img height=40 src="../../assets/imgs/newlogo1.png"></ion-title>
+    <ion-buttons end>
+      <!-- <button ion-button icon-only (click)="getClasses()">
+        <ion-icon name="refresh"></ion-icon>
+      </button> -->
+      <button ion-button item-end clear icon-only>
+        <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <!-- <p>Don't have an account? Sign up <span id="link" (click)="navigateToRegistrationPage()">here.</span></p> -->
-  <br><div class="center"><h1> Welcome to ClassConfusion! </h1></div>
-  <br><h2>Enter your email address below to confirm if you are a student or a professor:</h2>
+  <br>
+  <div class="center"><img width=50% src="../../assets/imgs/newlogo2.png"></div>
+  <br>
+  <h2>Enter your email address below to confirm if you are a student or a professor:</h2>
   <ion-item>
     <ion-label floating>Email Address</ion-label>
     <ion-input type="text" [(ngModel)]="email"></ion-input>
@@ -15,7 +25,7 @@
 
   <br><br>
   <div class="center">
-      <button ion-button (click) = "navigateToCorrectHomePage(email)" color="butt">Submit</button>
+      <button ion-button (click) = "navigateToCorrectHomePage(email)" color="primary">Submit</button>
   </div>
   <!-- <button ion-button (click)="login(user)">Login</button> -->
   <!--<button ion-button color="light" (click)="register(user)">Register</button> -->

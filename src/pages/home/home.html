@@ -1,17 +1,20 @@
 <ion-header>
-  <ion-navbar color="comment">
-    <ion-title>
-      ClassConfusion v.2
-    </ion-title>
+  <ion-navbar color="secondary">
+    <ion-title class="center" id="logo"><img height=40 src="../../assets/imgs/newlogo1.png"></ion-title>
 
   <ion-buttons end>
     <button ion-button item-end clear icon-only (click)="navigateToHomePage()"><ion-icon name="home"></ion-icon></button>
   </ion-buttons>
 
+
+
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+<br><div class="center"><img width=50% src="../../assets/imgs/newlogo2.png"></div><br>
+
 <ion-list radio-group [(ngModel)]="relationship">
   <ion-item>
   <ion-label>Login Page</ion-label>
