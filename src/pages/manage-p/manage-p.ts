@@ -184,7 +184,7 @@ export class ManagePPage {
   async onInput(ev: any) {
     console.log("printing searchbar event");
     console.log(ev);
-    let val = ev.srcElement.value;
+    let val = ev.target.value;
     console.log(val);
     this.classList.filter((item) => {
         console.log(item.name);

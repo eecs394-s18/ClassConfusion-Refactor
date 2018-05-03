@@ -41,7 +41,6 @@ export class LecturesPPage {
     this.navCtrl.push(HomePage);
   }
 
-
   navigateToTopicsForThisLecture(lectureName): void {
        var currLecture = lectureName;
        var currClass = this.className;
@@ -174,7 +173,7 @@ export class LecturesPPage {
   async onInput(ev: any) {
     console.log("printing searchbar event");
     console.log(ev);
-    let val = ev.srcElement.value;
+    let val = ev.target.value;
     console.log(val);
     this.lectureList.filter((item) => {
         console.log(item.name);

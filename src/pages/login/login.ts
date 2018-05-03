@@ -33,9 +33,9 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
   }
 
-
   navigateToCorrectHomePage(email): void {
      var inputEmail = email;
+     if (email == null) { return; }
      var profOrStudent = "";
 
      if (inputEmail.substr(inputEmail.length - 17) == "@northwestern.edu") // Professor
@@ -58,26 +58,4 @@ export class LoginPage {
      console.log("EMAIL: ", email)
      console.log("proforstud", profOrStudent)
    }
-
-  // async login(user: User) {
-  //   try {
-  //     const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
-  //     if (result) {
-  //       // this.navCtrl.setRoot('HomePage');
-  //       this.navCtrl.push(HomePage);
-  //     }
-  //   }
-  //   catch (e) {
-  //     this.presentAlert(e);
-  //     console.error(e);
-  //   }
-
-
-  // }
-
-  // printUser(): void{
-  //    let user = this.afAuth.auth.currentUser;
-  //    console.log(user)
-
-  // }
 }

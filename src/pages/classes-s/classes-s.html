@@ -49,11 +49,7 @@
     <ion-list >
       <ion-item *ngFor="let c of classList" >
         <ion-label>{{c.name}}</ion-label>
-        <ion-radio (click)="navigateToLecturesForThisClassStudent(c.name)" color="list-items"> </ion-radio>
-
-        <!-- <button ion-button item-end clear icon-only (click)="navigateToLecturesForThisClassStudent(class.name)" class="butt"> <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button> -->
-
-
+        <ion-radio (click)="navigateToLecturesForThisClassStudent(c.name)" color="list-items"></ion-radio>
       </ion-item>
     </ion-list>
   </div>
